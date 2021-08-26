@@ -5,6 +5,9 @@
  */
 package tools;
 
+import daos.JobDAO;
+import models.Job;
+
 /**
  *
  * @author hp
@@ -16,5 +19,11 @@ public class MBKM_CRUD {
         //test connection
         System.out.println(dbc.getConnection());
         
+        JobDAO jdao = new JobDAO(dbc.getConnection());
+        
+        //test get all
+        for (Job jobs : jdao.getAll()) {
+            System.out.println(jobs.getId() + " - "+ jobs.getTitle()+" - "+jobs.getMinSalary()+" - "+jobs.getMaxSalary());
+        }
     }
 }
