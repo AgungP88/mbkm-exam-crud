@@ -12,7 +12,7 @@ package tools;
 public class MBKM_CRUD {
     public static void main(String[] args) {
         DBConnection dbc = new DBConnection();
-        
+       
         //test connection
         System.out.println(dbc.getConnection());
         
