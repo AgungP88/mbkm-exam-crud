@@ -9,6 +9,8 @@ import java.io.PrintStream;
 import views.Menu;
 import daos.JobDAO;
 import models.Job;
+import daos.RegionDAO;
+import models.Region;
 
 /**
  *
@@ -19,7 +21,8 @@ public class MBKM_CRUD {
         DBConnection dbc = new DBConnection();
        
         //test connection
-        System.out.println(dbc.getConnection());
+        System.out.println(dbc.getConnection()); 
+        
         
         Menu menu = new Menu();
 //        menu.menuUtama();
