@@ -11,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import models.Department;
 
 /**
@@ -105,5 +107,26 @@ public boolean delete(String id){
         e.printStackTrace();
     }
     return false;
+    }
+
+public boolean insertUpdate(Department department) {
+        try {
+            boolean isInsert = getById(department.getId()) == null;
+            System.out.println(isInsert ? "Insert Berhasil" : "Update Berhasil");
+            String query = isInsert
+                    ? "INSERT INTO tb_department(department_name, location_id, manager_id, department_id) VALUES(?,?,?,?)"
+                    : "UPDATE tb_department SET department_name = ?, location_id = ?, department_id = ? "
+                    + "WHERE department_id = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, department.getName());
+            preparedStatement.setString(2, department.getLocation());
+            preparedStatement.setString(3, department.getManager());
+            preparedStatement.setString(4, department.getId());
+            preparedStatement.execute();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(RegionDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
 }

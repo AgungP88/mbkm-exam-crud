@@ -45,6 +45,11 @@ public class MBKM_CRUD {
 //              ddao.delete("5105") ? "Delete Berhasil" : "Delete Gagal"
 //        );
     
+
+        System.out.println(
+              ddao.insertUpdate(new Department("5105","HR manager","3101","123005"))
+              ? "Update/Delete Berhasil" : "Update/Delete Gagal"
+        );
     }
     
        
