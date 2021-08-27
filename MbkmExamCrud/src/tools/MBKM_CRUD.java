@@ -13,6 +13,8 @@ import daos.RegionDAO;
 import daos.CountryDAO;
 import models.Country;
 import models.Region;
+import daos.LocationDAO;
+import models.Location;
 
 /**
  *
@@ -63,5 +65,10 @@ public class MBKM_CRUD {
                 jdao.insertUpdate(new Job("1130007", "Production", 4000000, 7000000))
                 ? "Update/Delete Berhasil" : "Update/Delete Gagal"
           );
+
+          System.out.println(dbc.getConnection());
     }
 }
+        
+ 
+}}
