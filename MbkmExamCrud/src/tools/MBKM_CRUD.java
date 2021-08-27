@@ -38,8 +38,8 @@ public class MBKM_CRUD {
          
 //         System.out.println(cdao.getById("2104"));
 
-//           System.out.println(cdao.InsertOrUpdate(new Country("2107", "India"))
-//                        ?"berhasil" : "gagal");
+           System.out.println(cdao.InsertOrUpdate(new Country("2100", "India", 2))
+                        ?"berhasil" : "gagal");
  
 
 
