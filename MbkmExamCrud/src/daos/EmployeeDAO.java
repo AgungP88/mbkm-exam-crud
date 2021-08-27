@@ -11,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import models.Employee;
 
 
@@ -127,5 +129,36 @@ public boolean delete(String id){
         e.printStackTrace();
     }
     return false;
+    }
+
+public boolean insertUpdate(Employee employee) {
+        try {
+            boolean isInsert = getById(employee.getId()) == null;
+            System.out.println(isInsert ? "Insert Berhasil" : "Update Berhasil");
+            String query = isInsert
+                    ? "INSERT INTO tb_employee(first_name, last_name, email, phone_number, "
+                        + "hire_date, salary, comission_pct, job_id, manager_id, department_id, employee_id) VALUES("
+                        + "?,?,?,?,?,?,?,?,?,?,?)"
+                    : "UPDATE tb_employee SET first_name = ?, last_name = ?, email = ?, "
+                        + "phone_number = ?, hire_date = ?, salary = ?, comission_pct = ?, job_id = ?, manager_id = ?,"
+                        + "department_id = ? WHERE employee_id = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, employee.getFirstName());
+            preparedStatement.setString(2, employee.getLastName());
+            preparedStatement.setString(3, employee.getEmail());
+            preparedStatement.setString(4, employee.getPhoneNumber());
+            preparedStatement.setString(5, employee.getHireDate());
+            preparedStatement.setInt(6, employee.getSalary());
+            preparedStatement.setFloat(7, employee.getCommission());
+            preparedStatement.setString(8, employee.getJob());
+            preparedStatement.setString(9, employee.getManager());
+            preparedStatement.setString(10, employee.getDepartment());
+            preparedStatement.setString(11, employee.getId());
+            preparedStatement.execute();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(RegionDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
 }

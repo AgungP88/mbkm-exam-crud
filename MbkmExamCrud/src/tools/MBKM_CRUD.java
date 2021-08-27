@@ -55,5 +55,10 @@ public class MBKM_CRUD {
 //              edao.insertUpdate(new Employee(10, "Jauh bawa stnk 5"))
 //              ? "Update Berhasil" : "Update Gagal"
 //        );
+        System.out.println(
+                edao.insertUpdate(new Employee("123031","Asep","Subagia","asep@mail.com","08987654321","1999-07-07", 
+                        10000000, (float) 3.2,"1130005","123005","5102"))
+                ? "Update/Delete Berhasil" : "Update/Delete Gagal"
+          );
     }
 }
