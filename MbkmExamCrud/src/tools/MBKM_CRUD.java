@@ -10,6 +10,8 @@ import views.Menu;
 import daos.JobDAO;
 import models.Job;
 import daos.RegionDAO;
+import daos.CountryDAO;
+import models.Country;
 import models.Region;
 
 /**
