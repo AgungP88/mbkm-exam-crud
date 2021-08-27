@@ -29,9 +29,8 @@ public class JobDAO {
     
     
     /**
-     * @getAll Method untuk Get(mengambil semua data)
-     * 
-     * @return 
+     * Method yang berfungsi untuk mengambil semua data yang ada pada database
+     * @return method ini mengembalikan sebuah data dalam bentuk arrayList. sehingga untuk pemanggilan dilakukan perulangan
      */
     public List<Job> getAll(){
         List<Job> jobs = new ArrayList<>();
@@ -49,9 +48,9 @@ public class JobDAO {
     }
     
     /**
-     * 
-     * @param id
-     * @return 
+     * Method ini adalah method yang berfungsi untuk mengambil sebuah data berdasarkan parameter yang diinputkan
+     * @param id id untuk mengambil menentukan id mana yang menjadi parameter sebuah data yang ingin diambil
+     * @return method ini mengembalikan sebuah data dalam bentuk object
      */
     
     public Job getById(String id) {
@@ -70,9 +69,10 @@ public class JobDAO {
     }
     
     /**
-     * 
-     * @param jobs
-     * @return 
+     * Method ini berfungsi untuk menginputkan atau menambahkan data kedalam database berdasarkan nilai 
+     * @param jobs parameter ini adalah nilai-nllai yang kita ingin masukan kedalam database
+     * @return nilai yang dikembalikan oleh method ini berupa boolean, yaitu true apabila data berhasil dimasukan
+     * dan false apabila data gagal dimasukkan
      */
     public boolean insert(Job jobs){
     try {
@@ -92,9 +92,11 @@ public class JobDAO {
     }
 
     /**
-     * 
-     * @param jobs
-     * @return 
+     * Method ini berfungsi untuk mengubah data yang ada didalam database berdasarkan nilai yang kita isi pada parameter method
+     * @param jobs parameter ini adalah nilai-nllai yang kita ingin masukan kedalam database. parameter pertama
+     * adalah Id yang merupakan parameter rujukan untuk pengecekan apakah data tersebut ada didalam database atau tidak
+     * @return nilai yang dikembalikan oleh method ini berupa boolean, yaitu true apabila data berhasil dimasukan
+     * dan false apabila data gagal dimasukkan
      */
     public boolean update(Job jobs){
         try {
@@ -113,9 +115,10 @@ public class JobDAO {
         }
 
     /**
-     * 
-     * @param id
-     * @return 
+     * Method ini berfungsi untuk menghapus data berdasarkan parameter yang diinputkan
+     * @param id untuk mengambil menentukan id mana yang menjadi parameter sebuah data yang ingin dihapus
+     * @return method ini mengembalikan nilai berupa boolean. yaitu bernilai true apa bila data berhasil di hapus
+     * dan bernilai false apa bila data gagal dihapus
      */
     public boolean delete(String id){
         try {
@@ -131,9 +134,12 @@ public class JobDAO {
         }
     
     /**
-     * 
-     * @param job
-     * @return 
+     * Method ini berfungsi untuk memasukan data kedalam database atau mengubah data yang sudah ada didalam database, method ini 
+     * akan melakukan pengecekan berdasarkan parameter yang diinputkan, apabila data belum ada maka method akan melakukan insert
+     * namun apabila method sudah ada maka akan dilakukan update
+     * @param job untuk mengambil menentukan id mana yang menjadi parameter sebuah data yang ingin diinsert / diupdate
+     * @return method ini mengembalikan nilai berupa boolean. yaitu bernilai true apa bila data berhasil diinput/update
+     * dan bernilai false apa bila data gagal diinput/update
      */
     public boolean insertUpdate(Job job) {
             try {
