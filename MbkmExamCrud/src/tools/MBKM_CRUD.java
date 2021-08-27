@@ -5,6 +5,9 @@
  */
 package tools;
 
+import java.io.PrintStream;
+import views.Menu;
+
 /**
  *
  * @author hp
@@ -16,5 +19,13 @@ public class MBKM_CRUD {
         //test connection
         System.out.println(dbc.getConnection());
         
+        Menu menu = new Menu();
+//        menu.menuUtama();
+//        menu.menuEmployee();
+//        menu.menuCountry();
+//        menu.menuDepartment();
+//        menu.menuJob();
+//        menu.menuLocation();
+//        menu.menuRegion();
     }
 }
