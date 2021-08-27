@@ -27,6 +27,12 @@ public class JobDAO {
         this.connection = connection;
     }
     
+    
+    /**
+     * @getAll Method untuk Get(mengambil semua data)
+     * 
+     * @return 
+     */
     public List<Job> getAll(){
         List<Job> jobs = new ArrayList<>();
         try {
@@ -41,6 +47,12 @@ public class JobDAO {
         return jobs;
     
     }
+    
+    /**
+     * 
+     * @param id
+     * @return 
+     */
     
     public Job getById(String id) {
         Job jobs = null;
@@ -57,7 +69,11 @@ public class JobDAO {
         return jobs;
     }
     
-    
+    /**
+     * 
+     * @param jobs
+     * @return 
+     */
     public boolean insert(Job jobs){
     try {
         //Parameterized query
@@ -75,56 +91,67 @@ public class JobDAO {
     return false;
     }
 
-
-public boolean update(Job jobs){
-    try {
-        PreparedStatement preparedStatement = 
-                connection.prepareStatement("UPDATE tb_job SET job_title = ?, min_salary = ?, max_salary = ? WHERE job_id = ?");
-        preparedStatement.setString(1, jobs.getTitle());
-        preparedStatement.setInt(2, jobs.getMinSalary());
-        preparedStatement.setInt(3, jobs.getMaxSalary());
-        preparedStatement.setString(4, jobs.getId());
-        preparedStatement.execute();
-        return true;
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
-    return false;
-    }
-
-
-public boolean delete(String id){
-    try {
-        PreparedStatement preparedStatement = 
-                connection.prepareStatement("DELETE FROM tb_job WHERE job_id = ?");
-        preparedStatement.setString(1, id);
-//        preparedStatement.setInt(1, region.getId());
-        preparedStatement.execute();
-        return true;
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
-    return false;
-    }
-    
-
-public boolean insertUpdate(Job job) {
+    /**
+     * 
+     * @param jobs
+     * @return 
+     */
+    public boolean update(Job jobs){
         try {
-            boolean isInsert = getById(job.getId()) == null;
-            System.out.println(isInsert ? "Insert Berhasil" : "Update Berhasil");
-            String query = isInsert
-                    ? "INSERT INTO tb_job(job_title, min_salary, max_salary, job_id) VALUES(?,?,?,?)"
-                    : "UPDATE tb_job SET job_title = ?, min_salary = ?, max_salary = ? WHERE job_id = ?";
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, job.getTitle());
-            preparedStatement.setInt(2, job.getMinSalary());
-            preparedStatement.setInt(3, job.getMaxSalary());
-            preparedStatement.setString(4, job.getId());
+            PreparedStatement preparedStatement = 
+                    connection.prepareStatement("UPDATE tb_job SET job_title = ?, min_salary = ?, max_salary = ? WHERE job_id = ?");
+            preparedStatement.setString(1, jobs.getTitle());
+            preparedStatement.setInt(2, jobs.getMinSalary());
+            preparedStatement.setInt(3, jobs.getMaxSalary());
+            preparedStatement.setString(4, jobs.getId());
             preparedStatement.execute();
             return true;
-        } catch (SQLException ex) {
-            Logger.getLogger(RegionDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return false;
-    }
+        }
+
+    /**
+     * 
+     * @param id
+     * @return 
+     */
+    public boolean delete(String id){
+        try {
+            PreparedStatement preparedStatement = 
+                    connection.prepareStatement("DELETE FROM tb_job WHERE job_id = ?");
+            preparedStatement.setString(1, id);
+            preparedStatement.execute();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+        }
+    
+    /**
+     * 
+     * @param job
+     * @return 
+     */
+    public boolean insertUpdate(Job job) {
+            try {
+                boolean isInsert = getById(job.getId()) == null;
+                System.out.println(isInsert ? "Insert Berhasil" : "Update Berhasil");
+                String query = isInsert
+                        ? "INSERT INTO tb_job(job_title, min_salary, max_salary, job_id) VALUES(?,?,?,?)"
+                        : "UPDATE tb_job SET job_title = ?, min_salary = ?, max_salary = ? WHERE job_id = ?";
+                PreparedStatement preparedStatement = connection.prepareStatement(query);
+                preparedStatement.setString(1, job.getTitle());
+                preparedStatement.setInt(2, job.getMinSalary());
+                preparedStatement.setInt(3, job.getMaxSalary());
+                preparedStatement.setString(4, job.getId());
+                preparedStatement.execute();
+                return true;
+            } catch (SQLException ex) {
+                Logger.getLogger(RegionDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            return false;
+        }
 }
