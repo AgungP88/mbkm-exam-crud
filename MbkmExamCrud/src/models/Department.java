@@ -10,49 +10,49 @@ package models;
  * @author hp
  */
 public class Department {
-    private String Id, Name, Location, Manager;
+    private String id, name, location, manager;
     
     public Department(){
         
     }
     
     public Department(String Id, String Name, String Location, String Manager){
-        this.Id = Id;
-        this.Name = Name;
-        this.Location = Location;
-        this.Manager = Manager;
+        this.id = Id;
+        this.name = Name;
+        this.location = Location;
+        this.manager = Manager;
     }
 
     public String getId() {
-        return Id;
+        return id;
     }
 
     public void setId(String Id) {
-        this.Id = Id;
+        this.id = Id;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String Name) {
-        this.Name = Name;
+        this.name = Name;
     }
 
     public String getLocation() {
-        return Location;
+        return location;
     }
 
     public void setLocation(String Location) {
-        this.Location = Location;
+        this.location = Location;
     }
 
     public String getManager() {
-        return Manager;
+        return manager;
     }
 
     public void setManager(String Manager) {
-        this.Manager = Manager;
+        this.manager = Manager;
     }
     
 }

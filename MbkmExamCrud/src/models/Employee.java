@@ -12,9 +12,9 @@ import java.sql.Date;
  * @author hp
  */
 public class Employee {
-    private int Salary;
-    private String Id, FirstName, LastName, Email, PhoneNumber, Job, Manager, Department, HireDate;
-    private float Commission;
+    private int salary;
+    private String id, firstName, lastName, email, phoneNumber, job, manager, department, hireDate;
+    private float commission;
     
     public Employee(){
         
@@ -22,105 +22,105 @@ public class Employee {
     
     public Employee(String Id, String FirstName, String LastName, String Email, String PhoneNumber,
             String HireDate, int Salary, float Commission, String Job, String Manager, String Department){
-        this.Id = Id;
-        this.FirstName = FirstName;
-        this.LastName = LastName;
-        this.Email = Email;
-        this.PhoneNumber = PhoneNumber;
-        this.HireDate = HireDate;
-        this.Salary = Salary;
-        this.Commission = Commission;
-        this.Job = Job;
-        this.Manager = Manager;
-        this.Department = Department;
+        this.id = Id;
+        this.firstName = FirstName;
+        this.lastName = LastName;
+        this.email = Email;
+        this.phoneNumber = PhoneNumber;
+        this.hireDate = HireDate;
+        this.salary = Salary;
+        this.commission = Commission;
+        this.job = Job;
+        this.manager = Manager;
+        this.department = Department;
     }
 
     public int getSalary() {
-        return Salary;
+        return salary;
     }
 
     public void setSalary(int Salary) {
-        this.Salary = Salary;
+        this.salary = Salary;
     }
 
     public String getId() {
-        return Id;
+        return id;
     }
 
     public void setId(String Id) {
-        this.Id = Id;
+        this.id = Id;
     }
 
     public String getFirstName() {
-        return FirstName;
+        return firstName;
     }
 
     public void setFirstName(String FirstName) {
-        this.FirstName = FirstName;
+        this.firstName = FirstName;
     }
 
     public String getLastName() {
-        return LastName;
+        return lastName;
     }
 
     public void setLastName(String LastName) {
-        this.LastName = LastName;
+        this.lastName = LastName;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String Email) {
-        this.Email = Email;
+        this.email = Email;
     }
 
     public String getPhoneNumber() {
-        return PhoneNumber;
+        return phoneNumber;
     }
 
     public void setPhoneNumber(String PhoneNumber) {
-        this.PhoneNumber = PhoneNumber;
+        this.phoneNumber = PhoneNumber;
     }
 
     public String getJob() {
-        return Job;
+        return job;
     }
 
     public void setJob(String Job) {
-        this.Job = Job;
+        this.job = Job;
     }
 
     public String getManager() {
-        return Manager;
+        return manager;
     }
 
     public void setManager(String Manager) {
-        this.Manager = Manager;
+        this.manager = Manager;
     }
 
     public String getDepartment() {
-        return Department;
+        return department;
     }
 
     public void setDepartment(String Department) {
-        this.Department = Department;
+        this.department = Department;
     }
 
     public String getHireDate() {
-        return HireDate;
+        return hireDate;
     }
 
     public void setHireDate(String HireDate) {
-        this.HireDate = HireDate;
+        this.hireDate = HireDate;
     }
 
     public float getCommission() {
-        return Commission;
+        return commission;
     }
 
     public void setCommission(float Commission) {
-        this.Commission = Commission;
+        this.commission = Commission;
     }
     
 }

@@ -13,7 +13,7 @@ public class Country {
     
     private String id;
     private String name;
-    private int region_id;
+    private int regionId;
 
     public Country() {
     }
@@ -21,7 +21,7 @@ public class Country {
     public Country(String id, String name, int region_id) {
         this.id = id;
         this.name = name;
-        this.region_id = region_id;
+        this.regionId = region_id;
     }
 
     public Country(String id, String name) {
@@ -48,16 +48,16 @@ public class Country {
     }
 
     public int getRegion_id() {
-        return region_id;
+        return regionId;
     }
 
     public void setRegion_id(int region_id) {
-        this.region_id = region_id;
+        this.regionId = region_id;
     }
 
     @Override
     public String toString() {
-        return "Country{" + "id=" + id + ", name=" + name + ", region_id=" + region_id + '}';
+        return "Country{" + "id=" + id + ", name=" + name + ", region_id=" + regionId + '}';
     }
     
     

@@ -154,18 +154,15 @@ public class RegionDAO {
      * @param id -> untuk mengambil menentukan id mana yang menjadi parameter sebuah data yang ingin diambil
      * @return -> method ini mengembalikan sebuah data dalam bentuk object
      */
-    public List<Region> getById(int id) {
-        List<Region> regions = new ArrayList<>();
+    public Region getById(int id) {
+        Region regions = new Region();
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT *FROM tb_region WHERE region_id=?");
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                Region region = new Region();
-                region.setId(resultSet.getInt(1));
-                region.setName(resultSet.getString(2));
-                regions.add(region);
+                regions = new Region(resultSet.getInt(1), resultSet.getString(2));
             }
         } catch (Exception e) {
             e.printStackTrace();

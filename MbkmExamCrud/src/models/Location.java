@@ -12,30 +12,30 @@ package models;
 public class Location {
     
     private String id;
-    private String street_addres;
-    private String postal_code;
+    private String streetAddres;
+    private String postalCode;
     private String city;
-    private String state_province;
-    private String country_id;
+    private String stateProvince;
+    private String countryId;
 
     public Location() {
     }
 
     public Location(String id, String street_addres, String postal_code, String city, String state_province, String country_id) {
         this.id = id;
-        this.street_addres = street_addres;
-        this.postal_code = postal_code;
+        this.streetAddres = street_addres;
+        this.postalCode = postal_code;
         this.city = city;
-        this.state_province = state_province;
-        this.country_id = country_id;
+        this.stateProvince = state_province;
+        this.countryId = country_id;
     }
 
     public Location(String id, String street_addres, String postal_code, String city, String state_province) {
         this.id = id;
-        this.street_addres = street_addres;
-        this.postal_code = postal_code;
+        this.streetAddres = street_addres;
+        this.postalCode = postal_code;
         this.city = city;
-        this.state_province = state_province;
+        this.stateProvince = state_province;
     }
     
     
@@ -49,19 +49,19 @@ public class Location {
     }
 
     public String getStreet_addres() {
-        return street_addres;
+        return streetAddres;
     }
 
     public void setStreet_addres(String street_addres) {
-        this.street_addres = street_addres;
+        this.streetAddres = street_addres;
     }
 
     public String getPostal_code() {
-        return postal_code;
+        return postalCode;
     }
 
     public void setPostal_code(String postal_code) {
-        this.postal_code = postal_code;
+        this.postalCode = postal_code;
     }
 
     public String getCity() {
@@ -73,25 +73,25 @@ public class Location {
     }
 
     public String getState_province() {
-        return state_province;
+        return stateProvince;
     }
 
     public void setState_province(String state_province) {
-        this.state_province = state_province;
+        this.stateProvince = state_province;
     }
 
     public String getCountry_id() {
-        return country_id;
+        return countryId;
     }
 
     public void setCountry_id(String country_id) {
-        this.country_id = country_id;
+        this.countryId = country_id;
     }
 
     @Override
     public String toString() {
-        return "Location{" + "id=" + id + ", street_addres=" + street_addres + ", postal_code=" + postal_code + ", city=" 
-                + city + ", state_province=" + state_province + ", country_id=" + country_id + '}';
+        return "Location{" + "id=" + id + ", street_addres=" + streetAddres + ", postal_code=" + postalCode + ", city=" 
+                + city + ", state_province=" + stateProvince + ", country_id=" + countryId + '}';
     }
     
     

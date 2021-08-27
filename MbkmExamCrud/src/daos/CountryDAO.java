@@ -116,8 +116,8 @@ public class CountryDAO {
      * @param id untuk mengambil menentukan id mana yang menjadi parameter sebuah data yang ingin diambil
      * @return method ini mengembalikan sebuah data dalam bentuk object
      */
-    public List<Country> getById(String id) {
-        List<Country> countrys = new ArrayList<>();
+    public Country getById(String id) {
+        Country countrys = new Country();
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT *FROM tb_country WHERE country_id=?");
@@ -125,11 +125,8 @@ public class CountryDAO {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                Country country = new Country();
-                country.setId(resultSet.getString(1));
-                country.setName(resultSet.getString(2));
-                country.setRegion_id(resultSet.getInt(3));
-                countrys.add(country);
+                countrys = new Country(resultSet.getString(1), resultSet.getString(2), 
+                        resultSet.getInt(3));
             }
 
         } catch (Exception e) {

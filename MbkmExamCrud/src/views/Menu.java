@@ -5,11 +5,33 @@
  */
 package views;
 
+import daos.CountryDAO;
+import daos.DepartmentDAO;
+import daos.EmployeeDAO;
+import daos.JobDAO;
+import daos.LocationDAO;
+import daos.RegionDAO;
+import java.util.Scanner;
+import models.Region;
+import tools.DBConnection;
+
 /**
  *
  * @author hp
  */
 public class Menu {
+        DBConnection dbc = new DBConnection();
+        Scanner inp = new Scanner(System.in);
+        //test connection
+//        System.out.println(dbc.getConnection()); 
+        DepartmentDAO ddao = new DepartmentDAO(dbc.getConnection());
+        JobDAO jdao = new JobDAO(dbc.getConnection());
+        EmployeeDAO edao = new EmployeeDAO(dbc.getConnection());
+        RegionDAO rdao = new RegionDAO(dbc.getConnection());
+        CountryDAO cdao = new CountryDAO(dbc.getConnection());
+        LocationDAO ldao = new LocationDAO(dbc.getConnection());
+        
+        
     public void menuUtama(){
         System.out.println("+----------------------------------------------------------+");
         System.out.println("|              SELAMAT DATANG DI MENU UTAMA                |");
@@ -24,81 +46,45 @@ public class Menu {
         System.out.println("| Pilih Modul yang ingin anda gunakan (Pilih No 1 - 6) :   |");
     }
     
-    public void menuEmployee(){
+    public void menuCabang(){
         System.out.println("+----------------------------------------------------------+");
-        System.out.println("|             SELAMAT DATANG DI MENU EMPLOYEE              |");
+        System.out.println("|             SELAMAT DATANG DI SUB MENU                   |");
         System.out.println("+----------------------------------------------------------+");
         System.out.println("| Daftar Modul yang Bisa Anda Gunakan :                    |");
-        System.out.println("| 1. Lihat Semua Employee                                  |");
-        System.out.println("| 2. Lihat Employee berdasarkan Id Employee                |");
-        System.out.println("| 3. Tambah Employee                                       |");
-        System.out.println("| 4. Ubah data Employee berdasarkan Id Employee            |");
-        System.out.println("| 5. Hapus data Employee berdasarkan Id Employee           |");
+        System.out.println("| 1. Lihat Semua Data                                      |");
+        System.out.println("| 2. Lihat Data berdasarkan Id Data                        |");
+        System.out.println("| 3. Tambah Data                                           |");
+        System.out.println("| 4. Ubah data berdasarkan Id data                         |");
+        System.out.println("| 5. Hapus data berdasarkan Id data                        |");
         System.out.println("| Pilih Modul yang ingin anda gunakan (Pilih No 1 - 5) :   |");
     }
     
-    public void menuDepartment(){
-        System.out.println("+----------------------------------------------------------+");
-        System.out.println("|             SELAMAT DATANG DI MENU DEPARTMENT            |");
-        System.out.println("+----------------------------------------------------------+");
-        System.out.println("| Daftar Modul yang Bisa Anda Gunakan :                    |");
-        System.out.println("| 1. Lihat Semua Department                                |");
-        System.out.println("| 2. Lihat Department berdasarkan Id Department            |");
-        System.out.println("| 3. Tambah Department                                     |");
-        System.out.println("| 4. Ubah data Department berdasarkan Id Department        |");
-        System.out.println("| 5. Hapus data Department berdasarkan Id Department       |");
-        System.out.println("| Pilih Modul yang ingin anda gunakan (Pilih No 1 - 5) :   |");
-    }
     
-    public void menuJob(){
-        System.out.println("+----------------------------------------------------------+");
-        System.out.println("|             SELAMAT DATANG DI MENU JOB                   |");
-        System.out.println("+----------------------------------------------------------+");
-        System.out.println("| Daftar Modul yang Bisa Anda Gunakan :                    |");
-        System.out.println("| 1. Lihat Semua Job                                       |");
-        System.out.println("| 2. Lihat Job berdasarkan Id Job                          |");
-        System.out.println("| 3. Tambah Job                                            |");
-        System.out.println("| 4. Ubah data Job berdasarkan Id Job                      |");
-        System.out.println("| 5. Hapus data Job berdasarkan Id Job                     |");
-        System.out.println("| Pilih Modul yang ingin anda gunakan (Pilih No 1 - 5) :   |");
-    }
-    
-    public void menuLocation(){
-        System.out.println("+----------------------------------------------------------+");
-        System.out.println("|             SELAMAT DATANG DI MENU LOCATION              |");
-        System.out.println("+----------------------------------------------------------+");
-        System.out.println("| Daftar Modul yang Bisa Anda Gunakan :                    |");
-        System.out.println("| 1. Lihat Semua Location                                  |");
-        System.out.println("| 2. Lihat Location berdasarkan Id Location                |");
-        System.out.println("| 3. Tambah Location                                       |");
-        System.out.println("| 4. Ubah data Location berdasarkan Id Location            |");
-        System.out.println("| 5. Hapus data Location berdasarkan Id Location           |");
-        System.out.println("| Pilih Modul yang ingin anda gunakan (Pilih No 1 - 5) :   |");
-    }
-    
-    public void menuCountry(){
-        System.out.println("+----------------------------------------------------------+");
-        System.out.println("|             SELAMAT DATANG DI MENU COUNTRY               |");
-        System.out.println("+----------------------------------------------------------+");
-        System.out.println("| Daftar Modul yang Bisa Anda Gunakan :                    |");
-        System.out.println("| 1. Lihat Semua Country                                   |");
-        System.out.println("| 2. Lihat Country berdasarkan Id Country                  |");
-        System.out.println("| 3. Tambah Country                                        |");
-        System.out.println("| 4. Ubah data Country beradasarkan Id Country             |");
-        System.out.println("| 5. Hapus data Country beradasarkan Id Country            |");
-        System.out.println("| Pilih Modul yang ingin anda gunakan (Pilih No 1 - 5) :   |");
-    }
-    
-    public void menuRegion(){
-        System.out.println("+----------------------------------------------------------+");
-        System.out.println("|             SELAMAT DATANG DI MENU REGION                |");
-        System.out.println("+----------------------------------------------------------+");
-        System.out.println("| Daftar Modul yang Bisa Anda Gunakan :                    |");
-        System.out.println("| 1. Lihat Semua Region                                    |");
-        System.out.println("| 2. Lihat Region berdasarkan Id Region                    |");
-        System.out.println("| 3. Tambah Region                                         |");
-        System.out.println("| 4. Ubah data Region beradasarkan Id Region               |");
-        System.out.println("| 5. Hapus data Region beradasarkan Id Region              |");
-        System.out.println("| Pilih Modul yang ingin anda gunakan (Pilih No 1 - 5) :   |");
+    public void menuRegion(int id){
+        switch (id) {
+            case 1:
+                for (Region regions : rdao.getAll()) {
+                    System.out.println(regions.getId() + " - "+ regions.getName());
+                }
+                break;
+            case 2:
+                System.out.println("Masukan Id Region : ");
+                int idRegion = inp.nextInt();
+                Region region = rdao.getById(idRegion);
+                System.out.println(region.getId() + " - "+ region.getName());
+                break;
+            case 3:
+                
+                break;
+            case 4:
+                
+                break;
+            case 5:
+                
+                break;
+            default:
+                throw new AssertionError();
+        }
+        
     }
 }
