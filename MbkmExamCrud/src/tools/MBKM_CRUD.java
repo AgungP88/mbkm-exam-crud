@@ -5,6 +5,9 @@
  */
 package tools;
 
+import daos.LocationDAO;
+import models.Location;
+
 /**
  *
  * @author hp
@@ -15,6 +18,5 @@ public class MBKM_CRUD {
         
         //test connection
         System.out.println(dbc.getConnection());
-        
-    }
-}
+ 
+}}
