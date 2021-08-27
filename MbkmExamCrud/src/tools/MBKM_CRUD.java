@@ -25,5 +25,23 @@ public class MBKM_CRUD {
         for (Job jobs : jdao.getAll()) {
             System.out.println(jobs.getId() + " - "+ jobs.getTitle()+" - "+jobs.getMinSalary()+" - "+jobs.getMaxSalary());
         }
+        
+        Job jobs = jdao.getById("1130001");
+        System.out.println(jobs.getId() + " - "+ jobs.getTitle()+" - "+jobs.getMinSalary()+" - "+jobs.getMaxSalary());
+        
+//        System.out.println(
+//                jdao.insert(new Job("1130007","general manager", 9000000, 15000000))
+//                ? "Insert Berhasil" : "Insert Gagal"
+//        );
+
+//        System.out.println(
+//                jdao.update(new Job("1130006","General Manager", 9000000, 15000000))
+//                ? "Update Berhasil" : "Update Gagal"
+//        );
+//
+//        System.out.println(
+//              jdao.delete("1130007") ? "Delete Berhasil" : "Delete Gagal"
+//        );
+        
     }
 }
