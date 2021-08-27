@@ -27,6 +27,10 @@ public class LocationDAO {
         this.connection = connection;
     }
     
+    /**
+     * 
+     * @return 
+     */
     public List<Location> getAll() {
         List<Location> locations = new ArrayList<>();
         
@@ -49,6 +53,12 @@ public class LocationDAO {
         return locations;
     }
     
+    
+    /**
+     * 
+     * @param location
+     * @return 
+     */
     public boolean insert(Location location) {
         
         try {
@@ -67,6 +77,12 @@ public class LocationDAO {
         return false;
     }
     
+    
+    /**
+     * 
+     * @param location
+     * @return 
+     */
     public boolean update(Location location) {
         
         try {
@@ -87,6 +103,11 @@ public class LocationDAO {
         
     }
     
+    /**
+     * 
+     * @param id
+     * @return 
+     */
     public boolean delete(String id) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM tb_location WHERE location_id=?");
@@ -115,6 +136,12 @@ public class LocationDAO {
         return locations;
     }
     
+    
+    /**
+     * 
+     * @param location
+     * @return 
+     */
     public boolean InsertOrUpdate(Location location) {
         try {
             boolean isInsert = getById(location.getId()) == null;
