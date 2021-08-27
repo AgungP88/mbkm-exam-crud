@@ -27,6 +27,10 @@ public class CountryDAO {
         this.connection = connection;
     }
 
+    /**
+     * Method yang berfungsi untuk mengambil semua data tabel country yang ada pada database
+     * @return method ini mengembalikan sebuah data dalam bentuk arrayList. sehingga untuk pemanggilan dilakukan perulangan
+     */
     public List<Country> getAll() {
 
         List<Country> countrys = new ArrayList<>();
@@ -46,7 +50,14 @@ public class CountryDAO {
         }
         return countrys;
     }
-
+    
+    /**
+     * Method ini berfungsi untuk menginputkan atau menambahkan data tabel country ke dalam database berdasarkan nilai 
+     * yang kita isi pada parameter method
+     * @param country -> parameter ini adalah nilai-nllai yang kita ingin masukan kedalam database
+     * @return -> nilai yang dikembalikan oleh method ini berupa boolean, yaitu true apabila data berhasil dimasukan
+     * dan false apabila data gagal dimasukkan
+     */
     public boolean insert(Country country) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO tb_country(country_id, country_name, region_id) VALUES (?, ?,?)");
@@ -61,6 +72,13 @@ public class CountryDAO {
         return false;
     }
 
+    /**
+     * Method ini berfungsi untuk mengubah data tabel country yang ada didalam database berdasarkan nilai yang kita isi pada parameter method
+     * @param country -> parameter ini adalah nilai-nllai yang kita ingin masukan kedalam database. parameter pertama
+     * adalah Id yang merupakan parameter rujukan untuk pengecekan apakah data tersebut ada didalam database atau tidak
+     * @return -> nilai yang dikembalikan oleh method ini berupa boolean, yaitu true apabila data berhasil dimasukan
+     * dan false apabila data gagal dimasukkan
+     */
     public boolean update(Country country) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE tb_country SET country_name=? WHERE country_id=?");
@@ -75,6 +93,12 @@ public class CountryDAO {
         return false;
     }
 
+    /**
+     * Method ini berfungsi untuk menghapus data pada tabel country berdasarkan parameter yang diinputkan
+     * @param id untuk mengambil menentukan id mana yang menjadi parameter sebuah data yang ingin dihapus
+     * @return ethod ini mengembalikan nilai berupa boolean. yaitu bernilai true apa bila data berhasil di hapus
+     * dan bernilai false apa bila data gagal dihapus
+     */
     public boolean delete(String id) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM tb_country WHERE country_id=?");
@@ -87,6 +111,11 @@ public class CountryDAO {
         return false;
     }
 
+    /**
+     * Method ini adalah method yang berfungsi untuk mengambil sebuah data pada tabel country berdasarkan parameter yang diinputkan
+     * @param id untuk mengambil menentukan id mana yang menjadi parameter sebuah data yang ingin diambil
+     * @return method ini mengembalikan sebuah data dalam bentuk object
+     */
     public List<Country> getById(String id) {
         List<Country> countrys = new ArrayList<>();
 
@@ -110,6 +139,14 @@ public class CountryDAO {
 
     }
 
+    /**
+     * Method ini berfungsi untuk memasukan data pada tabel country kedalam database atau mengubah data yang sudah ada didalam database, method ini 
+     * akan melakukan pengecekan berdasarkan parameter yang diinputkan, apabila data belum ada maka method akan melakukan insert
+     * namun apabila method sudah ada maka akan dilakukan update
+     * @param country -> untuk mengambil menentukan id mana yang menjadi parameter sebuah data yang ingin diinsert / diupdate
+     * @return -> method ini mengembalikan nilai berupa boolean. yaitu bernilai true apa bila data berhasil diinput/update
+     * dan bernilai false apa bila data gagal diinput/update
+     */
     public boolean InsertOrUpdate(Country country) {
 
         try {

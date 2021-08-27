@@ -20,28 +20,5 @@ public class MBKM_CRUD {
         //test connection
         System.out.println(dbc.getConnection());
         
-     CountryDAO cdao=new CountryDAO(dbc.getConnection());
-     
-//     for(Country country:cdao.getAll()){
-//         System.out.println(country.getId()+" - "+country.getName()+"- "+country.getRegion_id());
-//     }
-     
-//        System.out.println(
-//                cdao.insert(new Country("2105", "Kanada", 9))
-//        ? "insert berhasil" :"insert gagal");
-        
-//        System.out.println(
-//                cdao.update(new Country("2104", "Indonesiaaaaa"))
-//        ? "update berhasil" :"update gagal");
-
-//         cdao.delete("2105");
-         
-//         System.out.println(cdao.getById("2104"));
-
-           System.out.println(cdao.InsertOrUpdate(new Country("2100", "India", 2))
-                        ?"berhasil" : "gagal");
- 
-
-
     }
 }
