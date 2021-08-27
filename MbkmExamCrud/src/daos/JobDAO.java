@@ -11,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import models.Job;
 
 
@@ -105,4 +107,24 @@ public boolean delete(String id){
     return false;
     }
     
+
+public boolean insertUpdate(Job job) {
+        try {
+            boolean isInsert = getById(job.getId()) == null;
+            System.out.println(isInsert ? "Insert Berhasil" : "Update Berhasil");
+            String query = isInsert
+                    ? "INSERT INTO tb_job(job_title, min_salary, max_salary, job_id) VALUES(?,?,?,?)"
+                    : "UPDATE tb_job SET job_title = ?, min_salary = ?, max_salary = ? WHERE job_id = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, job.getTitle());
+            preparedStatement.setInt(2, job.getMinSalary());
+            preparedStatement.setInt(3, job.getMaxSalary());
+            preparedStatement.setString(4, job.getId());
+            preparedStatement.execute();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(RegionDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
 }

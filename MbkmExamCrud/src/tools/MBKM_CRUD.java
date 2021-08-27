@@ -43,5 +43,10 @@ public class MBKM_CRUD {
 //              jdao.delete("1130007") ? "Delete Berhasil" : "Delete Gagal"
 //        );
         
+
+        System.out.println(
+                jdao.insertUpdate(new Job("1130007", "Production", 4000000, 7000000))
+                ? "Update/Delete Berhasil" : "Update/Delete Gagal"
+          );
     }
 }
