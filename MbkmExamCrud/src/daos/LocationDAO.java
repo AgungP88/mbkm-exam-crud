@@ -28,8 +28,8 @@ public class LocationDAO {
     }
     
     /**
-     * 
-     * @return 
+     * Method yang berfungsi untuk mengambil semua data pada tabel location yang ada pada database
+     * @return -> method ini mengembalikan sebuah data dalam bentuk arrayList. sehingga untuk pemanggilan dilakukan perulangan
      */
     public List<Location> getAll() {
         List<Location> locations = new ArrayList<>();
@@ -55,9 +55,11 @@ public class LocationDAO {
     
     
     /**
-     * 
-     * @param location
-     * @return 
+     * Method ini berfungsi untuk menginputkan atau menambahkan data pada tabel location ke dalam database berdasarkan nilai 
+     * yang kita isi pada parameter method
+     * @param location parameter ini adalah nilai-nllai yang kita ingin masukan kedalam database
+     * @return -> ilai yang dikembalikan oleh method ini berupa boolean, yaitu true apabila data berhasil dimasukan
+     * dan false apabila data gagal dimasukkan
      */
     public boolean insert(Location location) {
         
@@ -79,9 +81,11 @@ public class LocationDAO {
     
     
     /**
-     * 
-     * @param location
-     * @return 
+     * Method ini berfungsi untuk mengubah data pada tabel location yang ada di dalam database berdasarkan nilai yang kita isi pada parameter method
+     * @param location parameter ini adalah nilai-nllai yang kita ingin masukan kedalam database. parameter pertama
+     * adalah Id yang merupakan parameter rujukan untuk pengecekan apakah data tersebut ada didalam database atau tidak
+     * @return -> nilai yang dikembalikan oleh method ini berupa boolean, yaitu true apabila data berhasil dimasukan
+     * dan false apabila data gagal dimasukkan
      */
     public boolean update(Location location) {
         
@@ -104,9 +108,10 @@ public class LocationDAO {
     }
     
     /**
-     * 
-     * @param id
-     * @return 
+     * Method ini berfungsi untuk menghapus data pada tabel location berdasarkan parameter yang diinputkan
+     * @param id -> untuk mengambil menentukan id mana yang menjadi parameter sebuah data yang ingin dihapus
+     * @return -> method ini mengembalikan nilai berupa boolean. yaitu bernilai true apa bila data berhasil di hapus
+     * dan bernilai false apa bila data gagal dihapus
      */
     public boolean delete(String id) {
         try {
@@ -121,6 +126,11 @@ public class LocationDAO {
         return false;
     }
 
+    /**
+     * Method ini adalah method yang berfungsi untuk mengambil sebuah data pada tabel location berdasarkan parameter yang diinputkan
+     * @param id -> untuk mengambil menentukan id mana yang menjadi parameter sebuah data yang ingin diambil
+     * @return -> method ini mengembalikan sebuah data dalam bentuk object
+     */
     public Location getById(String id) {
         Location locations = null;
         try {
@@ -138,9 +148,12 @@ public class LocationDAO {
     
     
     /**
-     * 
-     * @param location
-     * @return 
+     * Method ini berfungsi untuk memasukan data pada tabel location ke dalam database atau mengubah data yang sudah ada didalam database, method ini 
+     * akan melakukan pengecekan berdasarkan parameter yang diinputkan, apabila data belum ada maka method akan melakukan insert
+     * namun apabila method sudah ada maka akan dilakukan update
+     * @param location -> untuk mengambil menentukan id mana yang menjadi parameter sebuah data yang ingin diinsert / diupdate
+     * @return -> method ini mengembalikan nilai berupa boolean. yaitu bernilai true apa bila data berhasil diinput/update
+     * dan bernilai false apa bila data gagal diinput/update
      */
     public boolean InsertOrUpdate(Location location) {
         try {
