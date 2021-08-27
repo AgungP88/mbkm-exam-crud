@@ -26,6 +26,11 @@ public class DepartmentDAO {
         this.connection = connection;
     }
     
+    
+    /**
+     * Method yang berfungsi untuk mengambil semua data yang ada pada database
+     * @return method ini mengembalikan sebuah data dalam bentuk arrayList. sehingga untuk pemanggilan dilakukan perulangan
+     */
     public List<Department> getAll(){
         List<Department> departments = new ArrayList<>();
         try {
@@ -43,6 +48,11 @@ public class DepartmentDAO {
 }
   
     
+    /**
+     * Method ini adalah method yang berfungsi untuk mengambil sebuah data berdasarkan parameter yang diinputkan
+     * @param id untuk mengambil menentukan id mana yang menjadi parameter sebuah data yang ingin diambil
+     * @return method ini mengembalikan sebuah data dalam bentuk object
+     */
     public Department getById(String id) {
         Department department = null;
         try {
@@ -60,6 +70,14 @@ public class DepartmentDAO {
         return department;
     }
     
+    
+    /**
+     * Method ini berfungsi untuk menginputkan atau menambahkan data kedalam database berdasarkan nilai 
+     yang kita isi pada parameter method
+     * @param department parameter ini adalah nilai-nllai yang kita ingin masukan kedalam database
+     * @return nilai yang dikembalikan oleh method ini berupa boolean, yaitu true apabila data berhasil dimasukan
+     * dan false apabila data gagal dimasukkan
+     */
     public boolean insert(Department department){
     try {
         //Parameterized query
@@ -78,6 +96,13 @@ public class DepartmentDAO {
     }
 
 
+    /**
+     * Method ini berfungsi untuk mengubah data yang ada didalam database berdasarkan nilai yang kita isi pada parameter method
+     * @param department parameter ini adalah nilai-nllai yang kita ingin masukan kedalam database. parameter pertama
+     * adalah Id yang merupakan parameter rujukan untuk pengecekan apakah data tersebut ada didalam database atau tidak
+     * @return nilai yang dikembalikan oleh method ini berupa boolean, yaitu true apabila data berhasil dimasukan
+     * dan false apabila data gagal dimasukkan
+     */
 public boolean update(Department department){
     try {
         PreparedStatement preparedStatement = 
@@ -95,6 +120,12 @@ public boolean update(Department department){
     }
 
 
+/**
+ * Method ini berfungsi untuk menghapus data berdasarkan parameter yang diinputkan
+ * @param id untuk mengambil menentukan id mana yang menjadi parameter sebuah data yang ingin dihapus
+ * @return method ini mengembalikan nilai berupa boolean. yaitu bernilai true apa bila data berhasil di hapus
+ * dan bernilai false apa bila data gagal dihapus
+ */
 public boolean delete(String id){
     try {
         PreparedStatement preparedStatement = 
@@ -109,6 +140,15 @@ public boolean delete(String id){
     return false;
     }
 
+
+/**
+ * Method ini berfungsi untuk memasukan data kedalam database atau mengubah data yang sudah ada didalam database, method ini 
+ * akan melakukan pengecekan berdasarkan parameter yang diinputkan, apabila data belum ada maka method akan melakukan insert
+ * namun apabila method sudah ada maka akan dilakukan update
+ * @param department untuk mengambil menentukan id mana yang menjadi parameter sebuah data yang ingin diinsert / diupdate
+ * @return method ini mengembalikan nilai berupa boolean. yaitu bernilai true apa bila data berhasil diinput/update
+ * dan bernilai false apa bila data gagal diinput/update
+ */
 public boolean insertUpdate(Department department) {
         try {
             boolean isInsert = getById(department.getId()) == null;
