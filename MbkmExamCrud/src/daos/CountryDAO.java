@@ -42,7 +42,7 @@ public class CountryDAO {
                 Country country = new Country();
                 country.setId(resultSet.getString(1));
                 country.setName(resultSet.getString(2));
-                country.setRegion_id(resultSet.getInt(3));
+                country.setRegionId(resultSet.getInt(3));
                 countrys.add(new Country(resultSet.getString(1), resultSet.getString(2), resultSet.getInt(3)));
             }
         } catch (Exception e) {
@@ -63,7 +63,7 @@ public class CountryDAO {
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO tb_country(country_id, country_name, region_id) VALUES (?, ?,?)");
             preparedStatement.setString(1, country.getId());
             preparedStatement.setString(2, country.getName());
-            preparedStatement.setInt(3, country.getRegion_id());
+            preparedStatement.setInt(3, country.getRegionId());
             preparedStatement.execute();
             return true;
         } catch (Exception e) {
@@ -155,7 +155,7 @@ public class CountryDAO {
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, country.getName());
-            preparedStatement.setInt(2, country.getRegion_id());
+            preparedStatement.setInt(2, country.getRegionId());
             preparedStatement.setString(3, country.getId());
             preparedStatement.execute();
             return true;

@@ -21,23 +21,14 @@ public class Location {
     public Location() {
     }
 
-    public Location(String id, String street_addres, String postal_code, String city, String state_province, String country_id) {
+    public Location(String id, String streetAddres, String postalCode, String city, String stateProvince, String countryIid) {
         this.id = id;
-        this.streetAddres = street_addres;
-        this.postalCode = postal_code;
+        this.streetAddres = streetAddres;
+        this.postalCode = postalCode;
         this.city = city;
-        this.stateProvince = state_province;
-        this.countryId = country_id;
+        this.stateProvince = stateProvince;
+        this.countryId = countryIid;
     }
-
-    public Location(String id, String street_addres, String postal_code, String city, String state_province) {
-        this.id = id;
-        this.streetAddres = street_addres;
-        this.postalCode = postal_code;
-        this.city = city;
-        this.stateProvince = state_province;
-    }
-    
     
 
     public String getId() {
@@ -48,20 +39,20 @@ public class Location {
         this.id = id;
     }
 
-    public String getStreet_addres() {
+    public String getStreetAddres() {
         return streetAddres;
     }
 
-    public void setStreet_addres(String street_addres) {
-        this.streetAddres = street_addres;
+    public void setStreetAddres(String streetAddres) {
+        this.streetAddres = streetAddres;
     }
 
-    public String getPostal_code() {
+    public String getPostalCode() {
         return postalCode;
     }
 
-    public void setPostal_code(String postal_code) {
-        this.postalCode = postal_code;
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
     }
 
     public String getCity() {
@@ -72,20 +63,20 @@ public class Location {
         this.city = city;
     }
 
-    public String getState_province() {
+    public String getStateProvince() {
         return stateProvince;
     }
 
-    public void setState_province(String state_province) {
-        this.stateProvince = state_province;
+    public void setStateProvince(String stateProvince) {
+        this.stateProvince = stateProvince;
     }
 
-    public String getCountry_id() {
+    public String getCountryId() {
         return countryId;
     }
 
-    public void setCountry_id(String country_id) {
-        this.countryId = country_id;
+    public void setCountryId(String countryId) {
+        this.countryId = countryId;
     }
 
     @Override

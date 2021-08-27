@@ -12,8 +12,11 @@ import daos.JobDAO;
 import daos.LocationDAO;
 import daos.RegionDAO;
 import java.util.Scanner;
+import models.Country;
 import models.Region;
 import tools.DBConnection;
+
+
 
 /**
  *
@@ -60,7 +63,8 @@ public class Menu {
     }
     
     
-    public void menuRegion(int id){
+    public void crudRegion(int id){
+        int idRegion;
         switch (id) {
             case 1:
                 for (Region regions : rdao.getAll()) {
@@ -69,18 +73,71 @@ public class Menu {
                 break;
             case 2:
                 System.out.println("Masukan Id Region : ");
-                int idRegion = inp.nextInt();
+                idRegion = inp.nextInt();
                 Region region = rdao.getById(idRegion);
                 System.out.println(region.getId() + " - "+ region.getName());
                 break;
             case 3:
-                
+                System.out.println(
+                    rdao.insert(new Region(11,"Jauh Pake Helm 8"))
+                    ? "Insert Berhasil" : "Insert Gagal"
+                );
                 break;
             case 4:
-                
+                System.out.println("Masukan Id Region : ");
+                idRegion = inp.nextInt();
+                System.out.println(
+                    rdao.update(new Region(idRegion,"Jauh Pake Helm 8"))
+                    ? "Insert Berhasil" : "Insert Gagal"
+                );
                 break;
             case 5:
-                
+                System.out.println("Masukan Id Region : ");
+                idRegion = inp.nextInt();
+                System.out.println(
+                    rdao.delete(idRegion) ? "Delete Berhasil" : "Delete Gagal"
+                );
+                break;
+            default:
+                throw new AssertionError();
+        }
+        
+    }
+    
+    public void crudCountry(int id){
+        String idCountry;
+        switch (id) {
+            case 1:
+                for (Country countrys : cdao.getAll()) {
+                    System.out.println(countrys.getId() + " - "+ countrys.getName()+" - "+countrys.getRegionId());
+                }
+                break;
+            case 2:
+                System.out.println("Masukan Id Region : ");
+                idCountry = inp.next();
+                Country countrys = cdao.getById(idCountry);
+                System.out.println(countrys.getId() + " - "+ countrys.getName()+" - "+countrys.getRegionId());
+                break;
+            case 3:
+                System.out.println(
+                    cdao.insert(new Country("2105","Vietnam", 1))
+                    ? "Insert Berhasil" : "Insert Gagal"
+                );
+                break;
+            case 4:
+                System.out.println("Masukan Id Region : ");
+                idCountry = inp.next();
+                System.out.println(
+                    cdao.update(new Country(idCountry,"Vietnam", 1))
+                    ? "Insert Berhasil" : "Insert Gagal"
+                );
+                break;
+            case 5:
+                System.out.println("Masukan Id Region : ");
+                idCountry = inp.next();
+                System.out.println(
+                    cdao.delete(idCountry) ? "Delete Berhasil" : "Delete Gagal"
+                );
                 break;
             default:
                 throw new AssertionError();

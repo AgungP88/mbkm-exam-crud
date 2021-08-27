@@ -43,6 +43,7 @@ public class MBKM_CRUD {
         Menu menu = new Menu();
         
         int menuAwal;
+        int menuReg;
         menu.menuUtama();
         menuAwal = inp.nextInt();
         
@@ -61,11 +62,13 @@ public class MBKM_CRUD {
                 break;
             case 5:
                 menu.menuCabang();
+                menuReg = inp.nextInt();
+                menu.crudCountry(menuReg);
                 break;
             case 6:
                 menu.menuCabang();
-                int menuReg = inp.nextInt();
-                menu.menuRegion(menuReg);
+                menuReg = inp.nextInt();
+                menu.crudRegion(menuReg);
                 break;
             default:
                 throw new AssertionError();

@@ -40,11 +40,11 @@ public class LocationDAO {
             while (resultSet.next()) {
                 Location location = new Location();
                 location.setId(resultSet.getString(1));
-                location.setStreet_addres(resultSet.getString(2));
-                location.setPostal_code(resultSet.getString(3));
+                location.setStreetAddres(resultSet.getString(2));
+                location.setPostalCode(resultSet.getString(3));
                 location.setCity(resultSet.getString(4));
-                location.setState_province(resultSet.getString(5));
-                location.setCountry_id(resultSet.getString(6));
+                location.setStateProvince(resultSet.getString(5));
+                location.setCountryId(resultSet.getString(6));
                 locations.add(new Location(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6)));
             }
         } catch (Exception e) {
@@ -66,11 +66,11 @@ public class LocationDAO {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO tb_location(location_id, street_address, postal_code, city, state_province, country_id) VALUES(?,?,?,?,?,?)");
             preparedStatement.setString(1, location.getId());
-            preparedStatement.setString(2, location.getStreet_addres());
-            preparedStatement.setString(3, location.getPostal_code());
+            preparedStatement.setString(2, location.getStreetAddres());
+            preparedStatement.setString(3, location.getPostalCode());
             preparedStatement.setString(4, location.getCity());
-            preparedStatement.setString(5, location.getState_province());
-            preparedStatement.setString(6, location.getCountry_id());
+            preparedStatement.setString(5, location.getStateProvince());
+            preparedStatement.setString(6, location.getCountryId());
             preparedStatement.execute();
             return true;
         } catch (Exception e) {
@@ -92,11 +92,11 @@ public class LocationDAO {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE tb_location SET street_address=?, postal_code=?, city=?, state_province=?, country_id=? WHERE location_id=?");
             
-            preparedStatement.setString(1, location.getStreet_addres());
-            preparedStatement.setString(2, location.getPostal_code());
+            preparedStatement.setString(1, location.getStreetAddres());
+            preparedStatement.setString(2, location.getPostalCode());
             preparedStatement.setString(3, location.getCity());
-            preparedStatement.setString(4, location.getState_province());
-            preparedStatement.setString(5, location.getCountry_id());
+            preparedStatement.setString(4, location.getStateProvince());
+            preparedStatement.setString(5, location.getCountryId());
             preparedStatement.setString(6, location.getId());
             preparedStatement.execute();
             return true;
@@ -166,11 +166,11 @@ public class LocationDAO {
                     : "UPDATE tb_location SET street_address = ?, postal_code= ?, city= ?, "
                     + "state_province = ?, country_id= ?  WHERE location_id = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, location.getStreet_addres());
-            preparedStatement.setString(2, location.getPostal_code());
+            preparedStatement.setString(1, location.getStreetAddres());
+            preparedStatement.setString(2, location.getPostalCode());
             preparedStatement.setString(3, location.getCity());
-            preparedStatement.setString(4, location.getStreet_addres());
-            preparedStatement.setString(5, location.getCountry_id());
+            preparedStatement.setString(4, location.getStreetAddres());
+            preparedStatement.setString(5, location.getCountryId());
             preparedStatement.setString(6, location.getId());
             
             preparedStatement.execute();

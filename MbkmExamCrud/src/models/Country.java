@@ -18,10 +18,10 @@ public class Country {
     public Country() {
     }
 
-    public Country(String id, String name, int region_id) {
+    public Country(String id, String name, int regionId) {
         this.id = id;
         this.name = name;
-        this.regionId = region_id;
+        this.regionId = regionId;
     }
 
     public Country(String id, String name) {
@@ -47,12 +47,12 @@ public class Country {
         this.name = name;
     }
 
-    public int getRegion_id() {
+    public int getRegionId() {
         return regionId;
     }
 
-    public void setRegion_id(int region_id) {
-        this.regionId = region_id;
+    public void setRegionId(int regionId) {
+        this.regionId = regionId;
     }
 
     @Override
