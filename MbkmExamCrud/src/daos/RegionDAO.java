@@ -80,9 +80,11 @@ public class RegionDAO {
         try {
             boolean isInsert = getById(region.getId()) == null;
             System.out.println(isInsert ? "Insert Berhasil" : "Update Berhasil");
+            
             String query = isInsert
-                    ? "INSERT INTO tb_region(region_name, region_id) VALUES(?,?)"
-                    : "UPDATE tb_region SET region_name = ? WHERE region_id = ?";
+                        ? "INSERT INTO tb_region(region_name, region_id) VALUES("
+                            + "?,?)"
+                        : "UPDATE tb_region SET region_name= ? WHERE region_id = ?";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, region.getName());

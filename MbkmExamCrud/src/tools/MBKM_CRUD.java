@@ -17,7 +17,8 @@ public class MBKM_CRUD {
         DBConnection dbc = new DBConnection();
         
         //test connection
-        System.out.println(dbc.getConnection());        
+        System.out.println(dbc.getConnection());  
+  
         
     }
 }
