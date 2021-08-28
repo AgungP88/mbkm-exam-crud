@@ -56,9 +56,13 @@ public class MBKM_CRUD {
                 break;
             case 3:
                 menu.menuCabang();
+                menuReg=inp.nextInt();
+                menu.crudDepartment(menuReg);
                 break;
             case 4:
                 menu.menuCabang();
+                menuReg=inp.nextInt();
+                menu.crudLocation(menuReg);
                 break;
             case 5:
                 menu.menuCabang();

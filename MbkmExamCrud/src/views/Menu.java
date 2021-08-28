@@ -13,6 +13,7 @@ import daos.LocationDAO;
 import daos.RegionDAO;
 import java.util.Scanner;
 import models.Country;
+import models.Department;
 import models.Location;
 import models.Region;
 import tools.DBConnection;
@@ -208,6 +209,59 @@ public class Menu {
                 idLocation = inp.next();
                 System.out.println(
                     ldao.delete(idLocation) ? "Delete Berhasil" : "Delete Gagal"
+                );
+                break;
+            default:
+                throw new AssertionError();
+        }
+        
+    }
+    
+    public void crudDepartment(int id){
+        String idDepartment, nameDepartment,idLocation, idManager;
+        switch (id) {
+            case 1:
+                for (Department departments : ddao.getAll()) {
+                    System.out.println(departments.getId() + " - "+ departments.getName()+" - "+departments.getLocation()
+                    +" - "+departments.getManager());
+                }
+                break;
+            case 2:
+                System.out.println("Masukan Id Department : ");
+                idDepartment = inp.next();
+                Department departments = ddao.getById(idDepartment);
+                System.out.println(departments.getId() + " - "+ departments.getName()+" - "+departments.getLocation()
+                    +" - "+departments.getManager());
+                break;
+            case 3:
+                System.out.println("Masukan data yang ingin diinput dalam format (Department_Id Department_Name Location_id "
+                        + "Manager_Id ) : ");
+                idDepartment = inp.next();
+                nameDepartment = inp.next();
+                idLocation = inp.next();
+                idManager = inp.next();
+                System.out.println(
+                    ddao.insert(new Department(idDepartment,nameDepartment,idLocation, idManager))
+                    ? "Insert Berhasil" : "Insert Gagal"
+                );
+                break;
+            case 4:
+                System.out.println("Masukan data yang ingin diubah dalam format (Department_Id Department_Name Location_Id "
+                        + "Manager_Id ) : ");
+                idDepartment = inp.next();
+                nameDepartment = inp.next();
+                idLocation = inp.next();
+                idManager = inp.next();
+                System.out.println(
+                    ddao.update(new Department(idDepartment,nameDepartment,idLocation, idManager))
+                    ? "Update Berhasil" : "Update Gagal"
+                );
+                break;
+            case 5:
+                System.out.println("Masukan Id Department : ");
+                idDepartment = inp.next();
+                System.out.println(
+                    ldao.delete(idDepartment) ? "Delete Berhasil" : "Delete Gagal"
                 );
                 break;
             default:
