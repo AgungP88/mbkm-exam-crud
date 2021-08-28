@@ -64,6 +64,7 @@ public class Menu {
         System.out.println("| 3. Tambah Data                                           |");
         System.out.println("| 4. Ubah data berdasarkan Id data                         |");
         System.out.println("| 5. Hapus data berdasarkan Id data                        |");
+        System.out.println("| 6. Tambah/Ubah data (Menggunakan 1 Method)               |");
         System.out.println("| 0. Exit                                                  |");
         System.out.println("| Pilih Modul yang ingin anda gunakan (Pilih No 1 - 5) :   |");
     }
@@ -107,6 +108,15 @@ public class Menu {
                 idRegion = inp.nextInt();
                 System.out.println(
                     rdao.delete(idRegion) ? "Delete Berhasil" : "Delete Gagal"
+                );
+                break;
+            case 6:
+                System.out.println("Masukan data yang ingin diubah dalam format (Region_Id Region_Name) : ");
+                idRegion = inp.nextInt();
+                nameRegion = inp.next();
+                System.out.println(
+                    rdao.InsertOrUpdate(new Region(idRegion,nameRegion))
+                    ? "Update/Insert Berhasil" : "Update/Insert Gagal"
                 );
                 break;
             case 0:
@@ -159,6 +169,16 @@ public class Menu {
                 idCountry = inp.next();
                 System.out.println(
                     cdao.delete(idCountry) ? "Delete Berhasil" : "Delete Gagal"
+                );
+                break;
+            case 6:
+                System.out.println("Masukan data yang ingin diubah dalam format (Country_Id Country_Name Region_Id) : ");
+                idCountry = inp.next();
+                nameCountry = inp.next();
+                idRegion = inp.nextInt();
+                System.out.println(
+                    cdao.InsertOrUpdate(new Country(idCountry,nameCountry,idRegion))
+                    ? "Update/Insert Berhasil" : "Update/Insert Gagal"
                 );
                 break;
             case 0:
@@ -223,6 +243,20 @@ public class Menu {
                     ldao.delete(idLocation) ? "Delete Berhasil" : "Delete Gagal"
                 );
                 break;
+            case 6:
+                System.out.println("Masukan data yang ingin diubah dalam format (Location_Id Street_Address Postal_Code "
+                        + "City State_Province Country_Id) : ");
+                idLocation = inp.next();
+                streetAddress = inp.next();
+                postalCode = inp.next();
+                city = inp.next();
+                stateProvince = inp.next();
+                idCountry = inp.next();
+                System.out.println(
+                    ldao.update(new Location(idLocation,streetAddress,postalCode, city, stateProvince, idCountry))
+                    ? "Update/Insert Berhasil" : "Update/Insert Gagal"
+                );
+                break;
             case 0:
                 System.exit(0);
                 break;
@@ -278,6 +312,17 @@ public class Menu {
                 idJob = inp.next();
                 System.out.println(
                     jdao.delete(idJob) ? "Delete Berhasil" : "Delete Gagal"
+                );
+                break;
+            case 6:
+                System.out.println("Masukan data yang ingin diinput dalam format (Job_Id Job_Title Min_Salary max_salary): ");
+                idJob = inp.next();
+                jobTitle = inp.next();
+                minSalary = inp.nextInt();
+                maxSalary = inp.nextInt();
+                System.out.println(
+                    jdao.insertUpdate(new Job(idJob,jobTitle,minSalary,maxSalary))
+                    ? "Update/Insert Berhasil" : "Update/Insert Gagal"
                 );
                 break;
             case 0:
@@ -338,6 +383,18 @@ public class Menu {
                 idDepartment = inp.next();
                 System.out.println(
                     ddao.delete(idDepartment) ? "Delete Berhasil" : "Delete Gagal"
+                );
+                break;
+            case 6:
+                System.out.println("Masukan data yang ingin diubah dalam format (Department_Id Department_Name Location_Id "
+                        + "Manager_Id ) : ");
+                idDepartment = inp.next();
+                nameDepartment = inp.next();
+                idLocation = inp.next();
+                idManager = inp.next();
+                System.out.println(                
+                    ddao.insertUpdate(new Department(idDepartment,nameDepartment,idLocation,idManager))
+                    ? "Update/Insert Berhasil" : "Update/Insert Gagal"
                 );
                 break;
             case 0:
@@ -417,6 +474,26 @@ public class Menu {
                 idEmployee = inp.next();
                 System.out.println(
                     edao.delete(idEmployee) ? "Delete Berhasil" : "Delete Gagal"
+                );
+                break;
+            case 6:
+                System.out.println("Masukan data yang ingin diinput dalam format (Employee_Id First_Name Last_Name Email "
+                        + "Phone_Number Hire_date Salary Comission_Pct Job_Id Manager_Id Department_Id) : ");
+                idEmployee = inp.next();
+                firstName = inp.next();
+                lastName = inp.next();
+                email = inp.next();
+                phoneNumber = inp.next();
+                hireDate = inp.next();
+                salary = inp.nextInt();
+                comissionPct = inp.nextFloat();
+                idJob = inp.next();
+                idManager = inp.next();
+                idDepartment = inp.next();
+                System.out.println(
+                    edao.insertUpdate(new Employee(idEmployee,firstName,lastName,email,phoneNumber, hireDate, salary,
+                    comissionPct, idJob, idManager, idDepartment))
+                    ? "Update/Insert Berhasil" : "Update/Insert Gagal"
                 );
                 break;
             case 0:
