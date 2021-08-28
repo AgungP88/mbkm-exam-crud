@@ -72,6 +72,8 @@ public class MBKM_CRUD {
                 menuReg = inp.nextInt();
                 menu.crudRegion(menuReg);
                 break;
+            case 0:
+                System.exit(0);
             default:
                 throw new AssertionError();
         }

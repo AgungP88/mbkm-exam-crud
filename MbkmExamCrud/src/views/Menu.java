@@ -50,6 +50,7 @@ public class Menu {
         System.out.println("| 4. Location                                              |");
         System.out.println("| 5. Country                                               |");
         System.out.println("| 6. Regions                                               |");
+        System.out.println("| 0. Exit                                                  |");
         System.out.println("| Pilih Modul yang ingin anda gunakan (Pilih No 1 - 6) :   |");
     }
     
@@ -63,6 +64,7 @@ public class Menu {
         System.out.println("| 3. Tambah Data                                           |");
         System.out.println("| 4. Ubah data berdasarkan Id data                         |");
         System.out.println("| 5. Hapus data berdasarkan Id data                        |");
+        System.out.println("| 0. Exit                                                  |");
         System.out.println("| Pilih Modul yang ingin anda gunakan (Pilih No 1 - 5) :   |");
     }
     
@@ -106,6 +108,9 @@ public class Menu {
                 System.out.println(
                     rdao.delete(idRegion) ? "Delete Berhasil" : "Delete Gagal"
                 );
+                break;
+            case 0:
+                System.exit(0);
                 break;
             default:
                 throw new AssertionError();
@@ -154,6 +159,9 @@ public class Menu {
                 System.out.println(
                     cdao.delete(idCountry) ? "Delete Berhasil" : "Delete Gagal"
                 );
+                break;
+            case 0:
+                System.exit(0);
                 break;
             default:
                 throw new AssertionError();
@@ -213,6 +221,9 @@ public class Menu {
                     ldao.delete(idLocation) ? "Delete Berhasil" : "Delete Gagal"
                 );
                 break;
+            case 0:
+                System.exit(0);
+                break;
             default:
                 throw new AssertionError();
         }
@@ -256,7 +267,7 @@ public class Menu {
                 maxSalary = inp.nextInt();
                 System.out.println(
                     jdao.update(new Job(idJob,jobTitle,minSalary,maxSalary))
-                    ? "Insert Berhasil" : "Insert Gagal"
+                    ? "Update Berhasil" : "Update Gagal"
                 );
                 break;
             case 5:
@@ -266,6 +277,9 @@ public class Menu {
                     jdao.delete(idJob) ? "Delete Berhasil" : "Delete Gagal"
                 );
                 break;
+            case 0:
+                System.exit(0);
+                break;             
             default:
                 throw new AssertionError();
         }
@@ -312,7 +326,7 @@ public class Menu {
                 idManager = inp.next();
                 System.out.println(                
                     ddao.update(new Department(idDepartment,nameDepartment,idLocation,idManager))
-                    ? "Insert Berhasil" : "Insert Gagal"
+                    ? "Update Berhasil" : "Update Gagal"
                 );
                 break;
             case 5:
@@ -322,13 +336,15 @@ public class Menu {
                     ddao.delete(idDepartment) ? "Delete Berhasil" : "Delete Gagal"
                 );
                 break;
+            case 0:
+                System.exit(0);
+                break;
             default:
                 throw new AssertionError();
         }
         
     }
-    
-    
+       
     public void crudEmployee(int id){
         String idEmployee, firstName, lastName, email, phoneNumber, hireDate, idJob, idManager, idDepartment;
         int salary;
@@ -388,7 +404,7 @@ public class Menu {
                 System.out.println(
                     edao.update(new Employee(idEmployee,firstName,lastName,email,phoneNumber, hireDate, salary,
                     comissionPct, idJob, idManager, idDepartment))
-                    ? "Insert Berhasil" : "Insert Gagal"
+                    ? "Update Berhasil" : "Update Gagal"
                 );
                 break;
             case 5:
@@ -397,6 +413,9 @@ public class Menu {
                 System.out.println(
                     edao.delete(idEmployee) ? "Delete Berhasil" : "Delete Gagal"
                 );
+                break;
+            case 0:
+                System.exit(0);
                 break;
             default:
                 throw new AssertionError();
