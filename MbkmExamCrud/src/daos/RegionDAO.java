@@ -108,14 +108,12 @@ public class RegionDAO {
      * @return -> method ini mengembalikan nilai berupa boolean. yaitu bernilai true apa bila data berhasil diinput/update
      * dan bernilai false apa bila data gagal diinput/update
      */
-    public boolean InsertOrUpdate(Region region) {
-             
+    public boolean InsertOrUpdate(Region region) {            
         try {
             boolean isInsert = getById(region.getId()) == null;
-            System.out.println(isInsert ? "Insert Berhasil" : "Update Berhasil");
-            
+            System.out.println(isInsert ? "Insert Berhasil" : "Update Berhasil");            
             String query = isInsert
-                        ? "INSERT INTO tb_region(region_name, region_id) VALUES ( ?,?)"
+                        ? "INSERT INTO tb_region(region_id, region_name) VALUES (?,?)"
                         : "UPDATE tb_region SET region_name= ? WHERE region_id = ?";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);

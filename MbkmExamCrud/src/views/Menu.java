@@ -253,7 +253,7 @@ public class Menu {
                 stateProvince = inp.next();
                 idCountry = inp.next();
                 System.out.println(
-                    ldao.update(new Location(idLocation,streetAddress,postalCode, city, stateProvince, idCountry))
+                    ldao.InsertOrUpdate(new Location(idLocation,streetAddress,postalCode, city, stateProvince, idCountry))
                     ? "Update/Insert Berhasil" : "Update/Insert Gagal"
                 );
                 break;
@@ -393,7 +393,7 @@ public class Menu {
                 idLocation = inp.next();
                 idManager = inp.next();
                 System.out.println(                
-                    ddao.insertUpdate(new Department(idDepartment,nameDepartment,idLocation,idManager))
+                    ddao.InsertOrUpdate(new Department(idDepartment,nameDepartment,idLocation,idManager))
                     ? "Update/Insert Berhasil" : "Update/Insert Gagal"
                 );
                 break;
