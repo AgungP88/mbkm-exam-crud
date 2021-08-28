@@ -108,24 +108,29 @@ public class RegionDAO {
      * @return -> method ini mengembalikan nilai berupa boolean. yaitu bernilai true apa bila data berhasil diinput/update
      * dan bernilai false apa bila data gagal diinput/update
      */
-    public boolean InsertOrUpdate(Region region) {            
-        try {
-            boolean isInsert = getById(region.getId()) == null;
-            System.out.println(isInsert ? "Insert Berhasil" : "Update Berhasil");            
-            String query = isInsert
-                        ? "INSERT INTO tb_region(region_name, reg"
-                    + "ion_id) VALUES (?,?)"
-                        : "UPDATE tb_region SET region_name= ? WHERE region_id = ?";
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
+    public boolean insertUpdate(Region region){
+    try {
+            PreparedStatement statement = connection.prepareStatement("SELECT *FROM tb_region WHERE region_id=?");
+            statement.setInt(1, region.getId());
+            ResultSet resultSet = statement.executeQuery();
+        if (resultSet.next()) {
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE tb_region SET region_name=? WHERE region_id=?");
             preparedStatement.setString(1, region.getName());
             preparedStatement.setInt(2, region.getId());
             preparedStatement.execute();
             return true;
-        } catch (SQLException ex) {
-            Logger.getLogger(RegionDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } else {            
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO tb_region(region_id, region_name) VALUES (?,?)");
+            preparedStatement.setInt(1, region.getId());
+            preparedStatement.setString(2, region.getName());
+            preparedStatement.execute();
+            return true;
         }
-        return false;
+    } catch (SQLException e) {
+        e.printStackTrace();
     }
+    return false;
+}
     
     /**
      * Method ini berfungsi untuk menghapus data tabel region berdasarkan parameter yang diinputkan

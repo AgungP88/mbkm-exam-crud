@@ -139,7 +139,7 @@ public class DepartmentDAO {
         }
         return false;
         }
-        return false;
+
 
 
     /**
@@ -173,4 +173,4 @@ public class DepartmentDAO {
     }
 
 }
-}
+

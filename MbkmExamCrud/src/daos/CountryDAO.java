@@ -171,26 +171,4 @@ public class CountryDAO {
     return false;
 }
     
-    
-//    public boolean InsertOrUpdate(Country country) {
-//        try {
-//            boolean isInsert = getById(country.getId()) == null;
-//            System.out.println(isInsert ? "Insert Berhasil" : "Update Berhasil");
-//            String query = isInsert
-//                    ? "INSERT INTO tb_country(country_name, region_id, country_id) VALUES (?,?,?)"
-//                    : "UPDATE tb_country SET country_name = ?, region_id =?  WHERE country_id = ?";
-//
-//            PreparedStatement preparedStatement = connection.prepareStatement(query);
-//            preparedStatement.setString(1, country.getName());
-//            preparedStatement.setInt(2, country.getRegionId());
-//            preparedStatement.setString(3, country.getId());
-//            preparedStatement.execute();
-//            return true;
-//
-//        } catch (SQLException ex) {
-//            Logger.getLogger(CountryDAO.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        return false;
-//
-//    }
 }

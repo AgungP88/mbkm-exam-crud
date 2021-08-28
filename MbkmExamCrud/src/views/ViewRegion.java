@@ -61,7 +61,7 @@ public class ViewRegion {
                 System.out.println("Masukan data yang ingin diubah dalam format (Region_Id Region_Name) : ");
                 idReg = inp.nextInt();
                 nameReg = inp.next();
-                System.out.println(rdao.InsertOrUpdate(new Region(idReg, nameReg))
+                System.out.println(rdao.insertUpdate(new Region(idReg, nameReg))
                     ? "Update/insert Berhasil" : "Update/insert Gagal"
                 );
                 break;
