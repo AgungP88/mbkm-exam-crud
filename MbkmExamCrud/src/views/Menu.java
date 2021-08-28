@@ -14,6 +14,8 @@ import daos.RegionDAO;
 import java.util.Scanner;
 import models.Country;
 import models.Department;
+import models.Employee;
+import models.Job;
 import models.Location;
 import models.Region;
 import tools.DBConnection;
@@ -217,8 +219,63 @@ public class Menu {
         
     }
     
+    
+    public void crudJob(int id){
+        String idJob, jobTitle;
+        int minSalary, maxSalary;
+        switch (id) {
+            case 1:
+                for (Job jobs : jdao.getAll()) {
+                    System.out.println(jobs.getId() + " - "+ jobs.getTitle()+" - "+jobs.getMinSalary()
+                    +" - "+jobs.getMaxSalary());
+                }
+                break;
+            case 2:
+                System.out.println("Masukan Id Job : ");
+                idJob = inp.next();
+                Job jobs = jdao.getById(idJob);
+                System.out.println(jobs.getId() + " - "+ jobs.getTitle()+" - "+jobs.getMinSalary()
+                    +" - "+jobs.getMaxSalary());
+                break;
+            case 3:
+                System.out.println("Masukan data yang ingin diinput dalam format (Job_Id Job_Title Min_Salary max_salary): ");
+                idJob = inp.next();
+                jobTitle = inp.next();
+                minSalary = inp.nextInt();
+                maxSalary = inp.nextInt();
+                System.out.println(
+                    jdao.insert(new Job(idJob,jobTitle,minSalary,maxSalary))
+                    ? "Insert Berhasil" : "Insert Gagal"
+                );
+                break;
+            case 4:
+                System.out.println("Masukan data yang ingin diinput dalam format (Job_Id Job_Title Min_Salary max_salary): ");
+                idJob = inp.next();
+                jobTitle = inp.next();
+                minSalary = inp.nextInt();
+                maxSalary = inp.nextInt();
+                System.out.println(
+                    jdao.update(new Job(idJob,jobTitle,minSalary,maxSalary))
+                    ? "Insert Berhasil" : "Insert Gagal"
+                );
+                break;
+            case 5:
+                System.out.println("Masukan Id Job : ");
+                idJob = inp.next();
+                System.out.println(
+                    jdao.delete(idJob) ? "Delete Berhasil" : "Delete Gagal"
+                );
+                break;
+            default:
+                throw new AssertionError();
+        }
+        
+    }
+    
+    
     public void crudDepartment(int id){
-        String idDepartment, nameDepartment,idLocation, idManager;
+        String idDepartment, nameDepartment, idLocation, idManager;
+
         switch (id) {
             case 1:
                 for (Department departments : ddao.getAll()) {
@@ -233,15 +290,16 @@ public class Menu {
                 System.out.println(departments.getId() + " - "+ departments.getName()+" - "+departments.getLocation()
                     +" - "+departments.getManager());
                 break;
-            case 3:
-                System.out.println("Masukan data yang ingin diinput dalam format (Department_Id Department_Name Location_id "
-                        + "Manager_Id ) : ");
+            case 3:              
+                System.out.println("Masukan data yang ingin diinput dalam format (Department_Id Department_Name "
+                        + "Location_id Manager_Id): ");
+
                 idDepartment = inp.next();
                 nameDepartment = inp.next();
                 idLocation = inp.next();
                 idManager = inp.next();
-                System.out.println(
-                    ddao.insert(new Department(idDepartment,nameDepartment,idLocation, idManager))
+                System.out.println(                 
+                    ddao.insert(new Department(idDepartment,nameDepartment,idLocation,idManager))
                     ? "Insert Berhasil" : "Insert Gagal"
                 );
                 break;
@@ -252,16 +310,92 @@ public class Menu {
                 nameDepartment = inp.next();
                 idLocation = inp.next();
                 idManager = inp.next();
-                System.out.println(
-                    ddao.update(new Department(idDepartment,nameDepartment,idLocation, idManager))
-                    ? "Update Berhasil" : "Update Gagal"
+                System.out.println(                
+                    ddao.update(new Department(idDepartment,nameDepartment,idLocation,idManager))
+                    ? "Insert Berhasil" : "Insert Gagal"
                 );
                 break;
             case 5:
                 System.out.println("Masukan Id Department : ");
                 idDepartment = inp.next();
                 System.out.println(
-                    ldao.delete(idDepartment) ? "Delete Berhasil" : "Delete Gagal"
+                    ddao.delete(idDepartment) ? "Delete Berhasil" : "Delete Gagal"
+                );
+                break;
+            default:
+                throw new AssertionError();
+        }
+        
+    }
+    
+    
+    public void crudEmployee(int id){
+        String idEmployee, firstName, lastName, email, phoneNumber, hireDate, idJob, idManager, idDepartment;
+        int salary;
+        float comissionPct;
+        switch (id) {
+            case 1:
+                for (Employee employees : edao.getAll()) {
+                System.out.println(employees.getId() + " - "+ employees.getFirstName()+" - "+employees.getLastName()+" - "+
+                    employees.getEmail()+" - "+employees.getPhoneNumber()+" - "+employees.getHireDate()+" - "+
+                    employees.getSalary()+" - "+employees.getCommission()+" - "+employees.getJob()+ " - "+
+                    employees.getManager()+" - "+employees.getDepartment());
+                }
+                break;
+            case 2:
+                System.out.println("Masukan Id Employee : ");
+                idEmployee = inp.next();
+                Employee employees = edao.getById(idEmployee);
+                System.out.println(employees.getId() + " - "+ employees.getFirstName()+" - "+employees.getLastName()+" - "+
+                    employees.getEmail()+" - "+employees.getPhoneNumber()+" - "+employees.getHireDate()+" - "+
+                    employees.getSalary()+" - "+employees.getCommission()+" - "+employees.getJob()+ " - "+
+                    employees.getManager()+" - "+employees.getDepartment());
+                break;
+            case 3:
+                System.out.println("Masukan data yang ingin diinput dalam format (Employee_Id First_Name Last_Name Email "
+                        + "Phone_Number Hire_date Salary Comission_Pct Job_Id Manager_Id Department_Id) : ");
+                idEmployee = inp.next();
+                firstName = inp.next();
+                lastName = inp.next();
+                email = inp.next();
+                phoneNumber = inp.next();
+                hireDate = inp.next();
+                salary = inp.nextInt();
+                comissionPct = inp.nextFloat();
+                idJob = inp.next();
+                idManager = inp.next();
+                idDepartment = inp.next();
+                System.out.println(
+                    edao.insert(new Employee(idEmployee,firstName,lastName,email,phoneNumber, hireDate, salary,
+                    comissionPct, idJob, idManager, idDepartment))
+                    ? "Insert Berhasil" : "Insert Gagal"
+                );
+                break;
+            case 4:
+                System.out.println("Masukan data yang ingin diinput dalam format (Employee_Id First_Name Last_Name Email "
+                        + "Phone_Number Hire_date Salary Comission_Pct Job_Id Manager_Id Department_Id) : ");
+                idEmployee = inp.next();
+                firstName = inp.next();
+                lastName = inp.next();
+                email = inp.next();
+                phoneNumber = inp.next();
+                hireDate = inp.next();
+                salary = inp.nextInt();
+                comissionPct = inp.nextFloat();
+                idJob = inp.next();
+                idManager = inp.next();
+                idDepartment = inp.next();
+                System.out.println(
+                    edao.update(new Employee(idEmployee,firstName,lastName,email,phoneNumber, hireDate, salary,
+                    comissionPct, idJob, idManager, idDepartment))
+                    ? "Insert Berhasil" : "Insert Gagal"
+                );
+                break;
+            case 5:
+                System.out.println("Masukan Id Employe : ");
+                idEmployee = inp.next();
+                System.out.println(
+                    edao.delete(idEmployee) ? "Delete Berhasil" : "Delete Gagal"
                 );
                 break;
             default:
