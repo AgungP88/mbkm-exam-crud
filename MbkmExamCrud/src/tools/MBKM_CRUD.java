@@ -75,7 +75,8 @@ public class MBKM_CRUD {
             case 0:
                 System.exit(0);
             default:
-                throw new AssertionError();
+                System.out.println("Maaf Nomor yang anda masukan salah");
+                System.exit(0);
         }
 //       
     }

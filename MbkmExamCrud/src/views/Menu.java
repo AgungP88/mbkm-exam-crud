@@ -113,7 +113,8 @@ public class Menu {
                 System.exit(0);
                 break;
             default:
-                throw new AssertionError();
+                System.out.println("Maaf Nomor yang anda masukan salah");
+                System.exit(0);
         }
         
     }
@@ -164,7 +165,8 @@ public class Menu {
                 System.exit(0);
                 break;
             default:
-                throw new AssertionError();
+                System.out.println("Maaf Nomor yang anda masukan salah");
+                System.exit(0);
         }
         
     }
@@ -225,7 +227,8 @@ public class Menu {
                 System.exit(0);
                 break;
             default:
-                throw new AssertionError();
+                System.out.println("Maaf Nomor yang anda masukan salah");
+                System.exit(0);
         }
         
     }
@@ -281,7 +284,8 @@ public class Menu {
                 System.exit(0);
                 break;             
             default:
-                throw new AssertionError();
+                System.out.println("Maaf Nomor yang anda masukan salah");
+                System.exit(0);
         }
         
     }
@@ -340,7 +344,8 @@ public class Menu {
                 System.exit(0);
                 break;
             default:
-                throw new AssertionError();
+                System.out.println("Maaf Nomor yang anda masukan salah");
+                System.exit(0);
         }
         
     }
@@ -418,7 +423,8 @@ public class Menu {
                 System.exit(0);
                 break;
             default:
-                throw new AssertionError();
+                System.out.println("Maaf Nomor yang anda masukan salah");
+                System.exit(0);
         }
         
     }
