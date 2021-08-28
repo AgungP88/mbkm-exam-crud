@@ -21,6 +21,12 @@ import daos.EmployeeDAO;
 import java.util.List;
 import java.util.Scanner;
 import models.Employee;
+import views.ViewCountry;
+import views.ViewDepartment;
+import views.ViewEmployee;
+import views.ViewJob;
+import views.ViewLocation;
+import views.ViewRegion;
 
 /**
  *
@@ -35,6 +41,12 @@ public class MBKM_CRUD {
         Scanner inp = new Scanner(System.in);
         
         Menu menu = new Menu();
+        ViewCountry viewCountry = new ViewCountry();
+        ViewDepartment viewDepartment = new ViewDepartment();
+        ViewEmployee viewEmployee = new ViewEmployee();
+        ViewJob viewJob = new ViewJob();
+        ViewLocation viewLocation = new ViewLocation();
+        ViewRegion viewRegion = new ViewRegion();
         
         int menuAwal;
         int menuReg;
@@ -45,32 +57,32 @@ public class MBKM_CRUD {
             case 1:
                 menu.menuCabang();
                 menuReg = inp.nextInt();
-                menu.crudEmployee(menuReg);
+                viewEmployee.crudEmployee(menuReg);
                 break;
             case 2:
                 menu.menuCabang();
                 menuReg = inp.nextInt();
-                menu.crudJob(menuReg);
+                viewJob.crudJob(menuReg);
                 break;
             case 3:
                 menu.menuCabang();
                 menuReg=inp.nextInt();
-                menu.crudDepartment(menuReg);
+                viewDepartment.crudDepartment(menuReg);
                 break;
             case 4:
                 menu.menuCabang();
                 menuReg = inp.nextInt();
-                menu.crudLocation(menuReg);
+                viewLocation.crudLocation(menuReg);
                 break;
             case 5:
                 menu.menuCabang();
                 menuReg = inp.nextInt();
-                menu.crudCountry(menuReg);
+                viewCountry.crudCountry(menuReg);
                 break;
             case 6:
                 menu.menuCabang();
                 menuReg = inp.nextInt();
-                menu.crudRegion(menuReg);
+                viewRegion.crudRegion(menuReg);
                 break;
             case 0:
                 System.exit(0);

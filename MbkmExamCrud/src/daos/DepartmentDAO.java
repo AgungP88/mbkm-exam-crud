@@ -155,7 +155,7 @@ public boolean insertUpdate(Department department) {
             System.out.println(isInsert ? "Insert Berhasil" : "Update Berhasil");
             String query = isInsert
                     ? "INSERT INTO tb_department(department_name, location_id, manager_id, department_id) VALUES(?,?,?,?)"
-                    : "UPDATE tb_department SET department_name = ?, location_id = ?, department_id = ? "
+                    : "UPDATE tb_department SET department_name = ?, location_id = ?, manager_id = ? "
                     + "WHERE department_id = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, department.getName());

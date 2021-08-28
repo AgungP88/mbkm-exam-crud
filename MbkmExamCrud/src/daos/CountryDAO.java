@@ -81,9 +81,10 @@ public class CountryDAO {
      */
     public boolean update(Country country) {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE tb_country SET country_name=? WHERE country_id=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE tb_country SET country_name=?, region_id=? WHERE country_id=?");
             preparedStatement.setString(1, country.getName());
-            preparedStatement.setString(2, country.getId());
+            preparedStatement.setInt(2, country.getRegionId());
+            preparedStatement.setString(3, country.getId());
             preparedStatement.execute();
             return true;
 
@@ -144,26 +145,52 @@ public class CountryDAO {
      * @return -> method ini mengembalikan nilai berupa boolean. yaitu bernilai true apa bila data berhasil diinput/update
      * dan bernilai false apa bila data gagal diinput/update
      */
-    public boolean InsertOrUpdate(Country country) {
-
-        try {
-            boolean isInsert = getById(country.getId()) == null;
-            System.out.println(isInsert ? "Insert Berhasil" : "Update Berhasil");
-            String query = isInsert
-                    ? "INSERT INTO tb_country(country_name, region_id, country_id) VALUES (?,?,?)"
-                    : "UPDATE tb_country SET country_name=?, region_id=? WHERE country_id=?";
-
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
+    public boolean insertUpdate(Country country){
+    try {
+            PreparedStatement statement = connection.prepareStatement("SELECT *FROM tb_country WHERE country_id=?");
+            statement.setString(1, country.getId());
+            ResultSet resultSet = statement.executeQuery();
+        if (resultSet.next()) {
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE tb_country SET country_name=?, region_id=? WHERE country_id=?");
             preparedStatement.setString(1, country.getName());
             preparedStatement.setInt(2, country.getRegionId());
             preparedStatement.setString(3, country.getId());
             preparedStatement.execute();
             return true;
-
-        } catch (SQLException ex) {
-            Logger.getLogger(CountryDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } else {            
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO tb_country(country_id, country_name, region_id) VALUES (?, ?,?)");
+            preparedStatement.setString(1, country.getId());
+            preparedStatement.setString(2, country.getName());
+            preparedStatement.setInt(3, country.getRegionId());
+            preparedStatement.execute();
+            return true;
         }
-        return false;
-
+    } catch (SQLException e) {
+        e.printStackTrace();
     }
+    return false;
+}
+    
+    
+//    public boolean InsertOrUpdate(Country country) {
+//        try {
+//            boolean isInsert = getById(country.getId()) == null;
+//            System.out.println(isInsert ? "Insert Berhasil" : "Update Berhasil");
+//            String query = isInsert
+//                    ? "INSERT INTO tb_country(country_name, region_id, country_id) VALUES (?,?,?)"
+//                    : "UPDATE tb_country SET country_name = ?, region_id =?  WHERE country_id = ?";
+//
+//            PreparedStatement preparedStatement = connection.prepareStatement(query);
+//            preparedStatement.setString(1, country.getName());
+//            preparedStatement.setInt(2, country.getRegionId());
+//            preparedStatement.setString(3, country.getId());
+//            preparedStatement.execute();
+//            return true;
+//
+//        } catch (SQLException ex) {
+//            Logger.getLogger(CountryDAO.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return false;
+//
+//    }
 }
