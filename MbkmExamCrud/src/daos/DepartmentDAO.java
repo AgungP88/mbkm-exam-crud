@@ -149,26 +149,6 @@ public boolean delete(String id){
  * @return method ini mengembalikan nilai berupa boolean. yaitu bernilai true apa bila data berhasil diinput/update
  * dan bernilai false apa bila data gagal diinput/update
  */
-//public boolean insertUpdate(Department department) {
-//        try {
-//            boolean isInsert = getById(department.getId()) == null;
-//            System.out.println(isInsert ? "Insert Berhasil" : "Update Berhasil");
-//            String query = isInsert
-//                    ? "INSERT INTO tb_department(department_name, location_id, manager_id, department_id) VALUES(?,?,?,?)"
-//                    : "UPDATE tb_department SET department_name = ?, location_id = ?, department_id = ? "
-//                    + "WHERE department_id = ?";
-//            PreparedStatement preparedStatement = connection.prepareStatement(query);
-//            preparedStatement.setString(1, department.getName());
-//            preparedStatement.setString(2, department.getLocation());
-//            preparedStatement.setString(3, department.getManager());
-//            preparedStatement.setString(4, department.getId());
-//            preparedStatement.execute();
-//            return true;
-//        } catch (SQLException ex) {
-//            Logger.getLogger(RegionDAO.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        return false;
-//    }
 
 public boolean InsertOrUpdate(Department department) {
             try {
