@@ -96,78 +96,81 @@ public class DepartmentDAO {
     }
 
 
-    /**
-     * Method ini berfungsi untuk mengubah data yang ada didalam database berdasarkan nilai yang kita isi pada parameter method
-     * @param department parameter ini adalah nilai-nllai yang kita ingin masukan kedalam database. parameter pertama
-     * adalah Id yang merupakan parameter rujukan untuk pengecekan apakah data tersebut ada didalam database atau tidak
-     * @return nilai yang dikembalikan oleh method ini berupa boolean, yaitu true apabila data berhasil dimasukan
-     * dan false apabila data gagal dimasukkan
-     */
-public boolean update(Department department){
-    try {
-        PreparedStatement preparedStatement = 
-                connection.prepareStatement("UPDATE tb_department SET department_name = ?, location_id = ?, manager_id = ? WHERE department_id = ?");
-        preparedStatement.setString(4, department.getId());
-        preparedStatement.setString(1, department.getName());
-        preparedStatement.setString(2, department.getLocation());
-        preparedStatement.setString(3, department.getManager());
-        preparedStatement.execute();
-        return true;
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
-    return false;
-    }
-
-
-/**
- * Method ini berfungsi untuk menghapus data berdasarkan parameter yang diinputkan
- * @param id untuk mengambil menentukan id mana yang menjadi parameter sebuah data yang ingin dihapus
- * @return method ini mengembalikan nilai berupa boolean. yaitu bernilai true apa bila data berhasil di hapus
- * dan bernilai false apa bila data gagal dihapus
- */
-public boolean delete(String id){
-    try {
-        PreparedStatement preparedStatement = 
-                connection.prepareStatement("DELETE FROM tb_department WHERE department_id = ?");
-        preparedStatement.setString(1, id);
-//        preparedStatement.setInt(1, region.getId());
-        preparedStatement.execute();
-        return true;
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
-    return false;
-    }
-
-
-/**
- * Method ini berfungsi untuk memasukan data kedalam database atau mengubah data yang sudah ada didalam database, method ini 
- * akan melakukan pengecekan berdasarkan parameter yang diinputkan, apabila data belum ada maka method akan melakukan insert
- * namun apabila method sudah ada maka akan dilakukan update
- * @param department untuk mengambil menentukan id mana yang menjadi parameter sebuah data yang ingin diinsert / diupdate
- * @return method ini mengembalikan nilai berupa boolean. yaitu bernilai true apa bila data berhasil diinput/update
- * dan bernilai false apa bila data gagal diinput/update
- */
-public boolean insertUpdate(Department department) {
+        /**
+         * Method ini berfungsi untuk mengubah data yang ada didalam database berdasarkan nilai yang kita isi pada parameter method
+         * @param department parameter ini adalah nilai-nllai yang kita ingin masukan kedalam database. parameter pertama
+         * adalah Id yang merupakan parameter rujukan untuk pengecekan apakah data tersebut ada didalam database atau tidak
+         * @return nilai yang dikembalikan oleh method ini berupa boolean, yaitu true apabila data berhasil dimasukan
+         * dan false apabila data gagal dimasukkan
+         */
+    public boolean update(Department department){
         try {
-            boolean isInsert = getById(department.getId()) == null;
-            System.out.println(isInsert ? "Insert Berhasil" : "Update Berhasil");
-            String query = isInsert
-                    ? "INSERT INTO tb_department(department_name, location_id, manager_id, department_id) VALUES(?,?,?,?)"
-                    : "UPDATE tb_department SET department_name = ?, location_id = ?, manager_id = ? "
-                    + "WHERE department_id = ?";
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            PreparedStatement preparedStatement = 
+                    connection.prepareStatement("UPDATE tb_department SET department_name = ?, location_id = ?, manager_id = ? WHERE department_id = ?");
+            preparedStatement.setString(4, department.getId());
             preparedStatement.setString(1, department.getName());
             preparedStatement.setString(2, department.getLocation());
             preparedStatement.setString(3, department.getManager());
-            preparedStatement.setString(4, department.getId());
             preparedStatement.execute();
             return true;
-        } catch (SQLException ex) {
-            Logger.getLogger(RegionDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return false;
+        }
+
+
+    /**
+     * Method ini berfungsi untuk menghapus data berdasarkan parameter yang diinputkan
+     * @param id untuk mengambil menentukan id mana yang menjadi parameter sebuah data yang ingin dihapus
+     * @return method ini mengembalikan nilai berupa boolean. yaitu bernilai true apa bila data berhasil di hapus
+     * dan bernilai false apa bila data gagal dihapus
+     */
+    public boolean delete(String id){
+        try {
+            PreparedStatement preparedStatement = 
+                    connection.prepareStatement("DELETE FROM tb_department WHERE department_id = ?");
+            preparedStatement.setString(1, id);
+    //        preparedStatement.setInt(1, region.getId());
+            preparedStatement.execute();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+        }
+        return false;
+
+
+    /**
+     * Method ini berfungsi untuk memasukan data kedalam database atau mengubah data yang sudah ada didalam database, method ini 
+     * akan melakukan pengecekan berdasarkan parameter yang diinputkan, apabila data belum ada maka method akan melakukan insert
+     * namun apabila method sudah ada maka akan dilakukan update
+     * @param department untuk mengambil menentukan id mana yang menjadi parameter sebuah data yang ingin diinsert / diupdate
+     * @return method ini mengembalikan nilai berupa boolean. yaitu bernilai true apa bila data berhasil diinput/update
+     * dan bernilai false apa bila data gagal diinput/update
+     */
+    public boolean insertUpdate(Department department) {
+            try {
+                boolean isInsert = getById(department.getId()) == null;
+                System.out.println(isInsert ? "Insert Berhasil" : "Update Berhasil");
+                String query = isInsert
+                        ? "INSERT INTO tb_department(department_name, location_id, manager_id, department_id) VALUES(?,?,?,?)"
+                        : "UPDATE tb_department SET department_name = ?, location_id = ?, manager_id = ? "
+                        + "WHERE department_id = ?";
+                PreparedStatement preparedStatement = connection.prepareStatement(query);
+                preparedStatement.setString(1, department.getName());
+                preparedStatement.setString(2, department.getLocation());
+                preparedStatement.setString(3, department.getManager());
+                preparedStatement.setString(4, department.getId());
+                preparedStatement.execute();
+                return true;
+            } catch (SQLException ex) {
+                Logger.getLogger(RegionDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            return false;
+
+    }
 
 }
 }
