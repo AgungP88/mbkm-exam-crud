@@ -167,6 +167,5 @@ public boolean insertUpdate(Department department) {
         } catch (SQLException ex) {
             Logger.getLogger(RegionDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return false;
-    }
+
 }
