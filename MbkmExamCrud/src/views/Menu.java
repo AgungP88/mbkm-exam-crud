@@ -13,6 +13,7 @@ import daos.LocationDAO;
 import daos.RegionDAO;
 import java.util.Scanner;
 import models.Country;
+import models.Location;
 import models.Region;
 import tools.DBConnection;
 
@@ -65,6 +66,7 @@ public class Menu {
     
     public void crudRegion(int id){
         int idRegion;
+        String nameRegion;
         switch (id) {
             case 1:
                 for (Region regions : rdao.getAll()) {
@@ -78,17 +80,21 @@ public class Menu {
                 System.out.println(region.getId() + " - "+ region.getName());
                 break;
             case 3:
+                System.out.println("Masukan data yang ingin diinput dalam format (Region_Id Region_Name) : ");
+                idRegion = inp.nextInt();
+                nameRegion = inp.next();
                 System.out.println(
-                    rdao.insert(new Region(11,"Jauh Pake Helm 8"))
+                    rdao.insert(new Region(idRegion,nameRegion))
                     ? "Insert Berhasil" : "Insert Gagal"
                 );
                 break;
             case 4:
-                System.out.println("Masukan Id Region : ");
+                System.out.println("Masukan data yang ingin diubah dalam format (Region_Id Region_Name) : ");
                 idRegion = inp.nextInt();
+                nameRegion = inp.next();
                 System.out.println(
-                    rdao.update(new Region(idRegion,"Jauh Pake Helm 8"))
-                    ? "Insert Berhasil" : "Insert Gagal"
+                    rdao.update(new Region(idRegion,nameRegion))
+                    ? "Update Berhasil" : "Update Gagal"
                 );
                 break;
             case 5:
@@ -105,7 +111,8 @@ public class Menu {
     }
     
     public void crudCountry(int id){
-        String idCountry;
+        String idCountry, nameCountry;
+        int idRegion;
         switch (id) {
             case 1:
                 for (Country countrys : cdao.getAll()) {
@@ -113,30 +120,94 @@ public class Menu {
                 }
                 break;
             case 2:
-                System.out.println("Masukan Id Region : ");
+                System.out.println("Masukan Id Country : ");
                 idCountry = inp.next();
                 Country countrys = cdao.getById(idCountry);
                 System.out.println(countrys.getId() + " - "+ countrys.getName()+" - "+countrys.getRegionId());
                 break;
             case 3:
+                System.out.println("Masukan data yang ingin diinput dalam format (Country_Id Country_Name Region_Id) : ");
+                idCountry = inp.next();
+                nameCountry = inp.next();
+                idRegion = inp.nextInt();
                 System.out.println(
-                    cdao.insert(new Country("2105","Vietnam", 1))
+                    cdao.insert(new Country(idCountry,nameCountry,idRegion))
                     ? "Insert Berhasil" : "Insert Gagal"
                 );
                 break;
             case 4:
-                System.out.println("Masukan Id Region : ");
+                System.out.println("Masukan data yang ingin diubah dalam format (Country_Id Country_Name Region_Id) : ");
                 idCountry = inp.next();
+                nameCountry = inp.next();
+                idRegion = inp.nextInt();
                 System.out.println(
-                    cdao.update(new Country(idCountry,"Vietnam", 1))
-                    ? "Insert Berhasil" : "Insert Gagal"
+                    cdao.update(new Country(idCountry,nameCountry,idRegion))
+                    ? "Update Berhasil" : "Update Gagal"
                 );
                 break;
             case 5:
-                System.out.println("Masukan Id Region : ");
+                System.out.println("Masukan Id Country: ");
                 idCountry = inp.next();
                 System.out.println(
                     cdao.delete(idCountry) ? "Delete Berhasil" : "Delete Gagal"
+                );
+                break;
+            default:
+                throw new AssertionError();
+        }
+        
+    }
+    
+    
+    public void crudLocation(int id){
+        String idLocation, streetAddress, postalCode, city, stateProvince, idCountry;
+        switch (id) {
+            case 1:
+                for (Location locations : ldao.getAll()) {
+                    System.out.println(locations.getId() + " - "+ locations.getStreetAddres()+" - "+locations.getPostalCode()
+                    +" - "+locations.getCity()+" - "+locations.getStateProvince()+" - "+locations.getCountryId());
+                }
+                break;
+            case 2:
+                System.out.println("Masukan Id Location : ");
+                idLocation = inp.next();
+                Location locations = ldao.getById(idLocation);
+                System.out.println(locations.getId() + " - "+ locations.getStreetAddres()+" - "+locations.getPostalCode()
+                    +" - "+locations.getCity()+" - "+locations.getStateProvince()+" - "+locations.getCountryId());
+                break;
+            case 3:
+                System.out.println("Masukan data yang ingin diinput dalam format (Location_Id Street_Address Postal_Code "
+                        + "City State_Province Country_Id) : ");
+                idLocation = inp.next();
+                streetAddress = inp.next();
+                postalCode = inp.next();
+                city = inp.next();
+                stateProvince = inp.next();
+                idCountry = inp.next();
+                System.out.println(
+                    ldao.insert(new Location(idLocation,streetAddress,postalCode, city, stateProvince, idCountry))
+                    ? "Insert Berhasil" : "Insert Gagal"
+                );
+                break;
+            case 4:
+                System.out.println("Masukan data yang ingin diubah dalam format (Location_Id Street_Address Postal_Code "
+                        + "City State_Province Country_Id) : ");
+                idLocation = inp.next();
+                streetAddress = inp.next();
+                postalCode = inp.next();
+                city = inp.next();
+                stateProvince = inp.next();
+                idCountry = inp.next();
+                System.out.println(
+                    ldao.update(new Location(idLocation,streetAddress,postalCode, city, stateProvince, idCountry))
+                    ? "Update Berhasil" : "Update Gagal"
+                );
+                break;
+            case 5:
+                System.out.println("Masukan Id Location : ");
+                idLocation = inp.next();
+                System.out.println(
+                    ldao.delete(idLocation) ? "Delete Berhasil" : "Delete Gagal"
                 );
                 break;
             default:
