@@ -91,7 +91,8 @@ public class MBKM_CRUD {
             case 6:
                 menu.menuCabang();
                 menuReg = inp.nextInt();
-                viewRegion.crudRegion(menuReg);
+                viewRegion.crudRegion(menuReg); 
+                menuUtama();
                 break;
             case 0:
                 System.exit(0);
