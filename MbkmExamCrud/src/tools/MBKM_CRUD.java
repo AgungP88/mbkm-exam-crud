@@ -6,7 +6,6 @@
 package tools;
 
 import java.io.PrintStream;
-import views.Menu;
 import daos.JobDAO;
 import models.Job;
 import daos.RegionDAO;
@@ -37,6 +36,39 @@ public class MBKM_CRUD {
         MBKM_CRUD menuHR=new MBKM_CRUD();
         menuHR.menuUtama();
     }
+    
+    public void mainMenu(){
+        System.out.println("+----------------------------------------------------------+");
+        System.out.println("|              SELAMAT DATANG DI MENU UTAMA                |");
+        System.out.println("+----------------------------------------------------------+");
+        System.out.println("| Daftar Modul yang Bisa Anda Gunakan :                    |");
+        System.out.println("| 1. Employee                                              |");
+        System.out.println("| 2. Job                                                   |");
+        System.out.println("| 3. Department                                            |");
+        System.out.println("| 4. Location                                              |");
+        System.out.println("| 5. Country                                               |");
+        System.out.println("| 6. Regions                                               |");
+        System.out.println("| 0. Exit                                                  |");
+        System.out.println("| Pilih Modul yang ingin anda gunakan (Pilih No 1 - 6) :   |");
+    }
+    
+    
+    public void menuCabang(){      
+        System.out.println("+----------------------------------------------------------+");
+        System.out.println("|             SELAMAT DATANG DI SUB MENU                   |");
+        System.out.println("+----------------------------------------------------------+");
+        System.out.println("| Daftar Modul yang Bisa Anda Gunakan :                    |");
+        System.out.println("| 1. Lihat Semua Data                                      |");
+        System.out.println("| 2. Lihat Data berdasarkan Id Data                        |");
+        System.out.println("| 3. Tambah Data                                           |");
+        System.out.println("| 4. Ubah data berdasarkan Id data                         |");
+        System.out.println("| 5. Hapus data berdasarkan Id data                        |");
+        System.out.println("| 6. Tambah/Ubah data (Menggunakan 1 Method)               |");
+        System.out.println("| 7. Kembali ke menu utama                                 |");
+        System.out.println("| 0. Exit                                                  |");
+        System.out.println("| Pilih Modul yang ingin anda gunakan (Pilih No 1 - 5) :   |");
+    }
+    
     public void menuUtama(){
                 DBConnection dbc = new DBConnection();
        
@@ -44,7 +76,6 @@ public class MBKM_CRUD {
         System.out.println(dbc.getConnection()); 
         Scanner inp = new Scanner(System.in);
         
-        Menu menu = new Menu();
         ViewCountry viewCountry = new ViewCountry();
         ViewDepartment viewDepartment = new ViewDepartment();
         ViewEmployee viewEmployee = new ViewEmployee();
@@ -54,43 +85,33 @@ public class MBKM_CRUD {
         
         int menuAwal;
         int menuReg;
-        menu.menuUtama();
+        mainMenu();
         menuAwal = inp.nextInt();
+        menuCabang();
+        menuReg = inp.nextInt();
         
         switch (menuAwal) {
             case 1:
-                menu.menuCabang();
-                menuReg = inp.nextInt();
                 viewEmployee.crudEmployee(menuReg);
                 menuUtama();
                 break;
             case 2:
-                menu.menuCabang();
-                menuReg = inp.nextInt();
                 viewJob.crudJob(menuReg);
                 menuUtama();
                 break;
             case 3:
-                menu.menuCabang();
-                menuReg=inp.nextInt();
                 viewDepartment.crudDepartment(menuReg);
                 menuUtama();
                 break;
             case 4:
-                menu.menuCabang();
-                menuReg = inp.nextInt();
                 viewLocation.crudLocation(menuReg);
                 menuUtama();
                 break;
             case 5:
-                menu.menuCabang();
-                menuReg = inp.nextInt();
                 viewCountry.crudCountry(menuReg);
                 menuUtama();
                 break;
             case 6:
-                menu.menuCabang();
-                menuReg = inp.nextInt();
                 viewRegion.crudRegion(menuReg); 
                 menuUtama();
                 break;
