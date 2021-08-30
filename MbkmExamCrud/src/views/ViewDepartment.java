@@ -9,6 +9,7 @@ import daos.DepartmentDAO;
 import java.util.Scanner;
 import models.Department;
 import tools.DBConnection;
+import tools.MBKM_CRUD;
 
 /**
  *
@@ -19,6 +20,7 @@ public class ViewDepartment {
     DBConnection dbc = new DBConnection();
     Scanner inp = new Scanner(System.in);
     DepartmentDAO ddao = new DepartmentDAO(dbc.getConnection());
+    MBKM_CRUD menuHR=new MBKM_CRUD();
     
         public void crudDepartment(int id){
         String idDepartment, nameDepartment, idLocation, idManager;
@@ -80,6 +82,9 @@ public class ViewDepartment {
                     ddao.insertUpdate(new Department(idDepartment,nameDepartment,idLocation,idManager))
                     ? "Update/Insert Berhasil" : "Update/Insert Gagal"
                 );
+                break;
+            case 7:
+                menuHR.menuUtama();
                 break;
             case 0:
                 System.exit(0);

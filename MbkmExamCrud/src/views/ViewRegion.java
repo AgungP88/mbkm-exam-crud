@@ -9,6 +9,7 @@ import daos.RegionDAO;
 import java.util.Scanner;
 import models.Region;
 import tools.DBConnection;
+import tools.MBKM_CRUD;
 
 /**
  *
@@ -19,6 +20,7 @@ public class ViewRegion {
     DBConnection dbc = new DBConnection();
     Scanner inp = new Scanner(System.in);
     RegionDAO rdao = new RegionDAO(dbc.getConnection());
+    MBKM_CRUD menuHR=new MBKM_CRUD();
     
     public void crudRegion(int id){
         int idReg;
@@ -38,7 +40,7 @@ public class ViewRegion {
             case 3:
                 System.out.println("Masukan data yang ingin diinput dalam format (Region_Id Region_Name) : ");
                 idReg = inp.nextInt();
-                nameReg = inp.next();
+                nameReg = inp.nextLine();
                 System.out.println(rdao.insert(new Region(idReg,nameReg))
                     ? "Insert Berhasil" : "Insert Gagal"
                 );
@@ -64,6 +66,9 @@ public class ViewRegion {
                 System.out.println(rdao.insertUpdate(new Region(idReg, nameReg))
                     ? "Update/insert Berhasil" : "Update/insert Gagal"
                 );
+                break;
+            case 7:
+                menuHR.menuUtama();
                 break;
             case 0:
                 System.exit(0);

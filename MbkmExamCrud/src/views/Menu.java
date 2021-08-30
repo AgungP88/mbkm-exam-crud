@@ -65,6 +65,7 @@ public class Menu {
         System.out.println("| 4. Ubah data berdasarkan Id data                         |");
         System.out.println("| 5. Hapus data berdasarkan Id data                        |");
         System.out.println("| 6. Tambah/Ubah data (Menggunakan 1 Method)               |");
+        System.out.println("| 7. Kembali ke menu utama                                 |");
         System.out.println("| 0. Exit                                                  |");
         System.out.println("| Pilih Modul yang ingin anda gunakan (Pilih No 1 - 5) :   |");
     }

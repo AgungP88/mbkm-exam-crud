@@ -9,6 +9,7 @@ import daos.CountryDAO;
 import java.util.Scanner;
 import models.Country;
 import tools.DBConnection;
+import tools.MBKM_CRUD;
 
 /**
  *
@@ -18,6 +19,7 @@ public class ViewCountry {
     DBConnection dbc = new DBConnection();
     Scanner inp = new Scanner(System.in);
     CountryDAO cdao = new CountryDAO(dbc.getConnection());
+    MBKM_CRUD menuHR=new MBKM_CRUD();
     
     public void crudCountry(int id){
         String idCountry, nameCountry;
@@ -70,6 +72,9 @@ public class ViewCountry {
                     cdao.insertUpdate(new Country(idCountry,nameCountry,idRegion))
                     ? "Update/Insert Berhasil" : "Update/Insert Gagal"
                 );
+                break;
+            case 7:
+                menuHR.menuUtama();
                 break;
             case 0:
                 System.exit(0);

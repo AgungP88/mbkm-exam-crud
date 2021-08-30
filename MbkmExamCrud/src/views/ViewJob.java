@@ -9,6 +9,7 @@ import daos.JobDAO;
 import java.util.Scanner;
 import models.Job;
 import tools.DBConnection;
+import tools.MBKM_CRUD;
 
 /**
  *
@@ -18,6 +19,7 @@ public class ViewJob {
     DBConnection dbc = new DBConnection();
     Scanner inp = new Scanner(System.in);
     JobDAO jdao = new JobDAO(dbc.getConnection());
+    MBKM_CRUD menuHR=new MBKM_CRUD();
     
     public void crudJob(int id){
         String idJob, jobTitle;
@@ -75,6 +77,9 @@ public class ViewJob {
                     jdao.insertUpdate(new Job(idJob,jobTitle,minSalary,maxSalary))
                     ? "Update/Insert Berhasil" : "Update/Insert Gagal"
                 );
+                break;
+            case 7:
+                menuHR.menuUtama();
                 break;
             case 0:
                 System.exit(0);

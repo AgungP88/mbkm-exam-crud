@@ -9,6 +9,7 @@ import daos.LocationDAO;
 import java.util.Scanner;
 import models.Location;
 import tools.DBConnection;
+import tools.MBKM_CRUD;
 
 /**
  *
@@ -18,6 +19,7 @@ public class ViewLocation {
     DBConnection dbc = new DBConnection();
     Scanner inp = new Scanner(System.in);
     LocationDAO ldao = new LocationDAO(dbc.getConnection());
+    MBKM_CRUD menuHR=new MBKM_CRUD();
     
     public void crudLocation(int id){
         String idLocation, streetAddress, postalCode, city, stateProvince, idCountry;
@@ -83,6 +85,9 @@ public class ViewLocation {
                     ldao.InsertOrUpdate(new Location(idLocation,streetAddress,postalCode, city, stateProvince, idCountry))
                     ? "Update/Insert Berhasil" : "Update/Insert Gagal"
                 );
+                break;
+            case 7:
+                menuHR.menuUtama();
                 break;
             case 0:
                 System.exit(0);

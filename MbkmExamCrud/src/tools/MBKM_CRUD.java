@@ -37,7 +37,7 @@ public class MBKM_CRUD {
         MBKM_CRUD menuHR=new MBKM_CRUD();
         menuHR.menuUtama();
     }
-    void menuUtama(){
+    public void menuUtama(){
                 DBConnection dbc = new DBConnection();
        
         //test connection

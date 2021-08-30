@@ -19,6 +19,7 @@ public class ViewEmployee {
     DBConnection dbc = new DBConnection();
     Scanner inp = new Scanner(System.in);
     EmployeeDAO edao = new EmployeeDAO(dbc.getConnection());
+    MBKM_CRUD menuHR=new MBKM_CRUD();
     
     public void crudEmployee(int id){
         String idEmployee, firstName, lastName, email, phoneNumber, hireDate, idJob, idManager, idDepartment;
@@ -108,6 +109,9 @@ public class ViewEmployee {
                     comissionPct, idJob, idManager, idDepartment))
                     ? "Update/Insert Berhasil" : "Update/Insert Gagal"
                 );
+                break;
+            case 7:
+                menuHR.menuUtama();
                 break;
             case 0:
                 System.exit(0);
