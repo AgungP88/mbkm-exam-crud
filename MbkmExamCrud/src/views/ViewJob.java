@@ -63,9 +63,14 @@ public class ViewJob {
             case 5:
                 System.out.println("Masukan Id Job : ");
                 idJob = inp.next();
-                System.out.println(
-                    jdao.delete(idJob) ? "Delete Berhasil" : "Delete Gagal"
-                );
+                System.out.println("Apakah anda yakin ingin hapus? (ya/tidak) ");
+                String opsi=inp.next();
+                if(opsi.equalsIgnoreCase("ya")){
+                    System.out.println(jdao.delete(idJob) ? "Delete Berhasil" : "Delete Gagal"
+                    );}
+                    else{
+                        System.out.println("data gagal dihapus");
+                    }                    
                 break;
             case 6:
                 System.out.println("Masukan data yang ingin diinput dalam format (Job_Id Job_Title Min_Salary max_salary): ");

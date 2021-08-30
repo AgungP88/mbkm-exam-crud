@@ -59,9 +59,14 @@ public class ViewCountry {
             case 5:
                 System.out.println("Masukan Id Country: ");
                 idCountry = inp.next();
-                System.out.println(
-                    cdao.delete(idCountry) ? "Delete Berhasil" : "Delete Gagal"
-                );
+                System.out.println("Apakah anda yakin ingin hapus? (ya/tidak) ");
+                String opsi=inp.next();
+                if(opsi.equalsIgnoreCase("ya")){
+                    System.out.println(cdao.delete(idCountry) ? "Delete Berhasil" : "Delete Gagal"
+                    );}
+                    else{
+                        System.out.println("data gagal dihapus");
+                    }              
                 break;
             case 6:
                 System.out.println("Masukan data yang ingin diubah dalam format (Country_Id Country_Name Region_Id) : ");

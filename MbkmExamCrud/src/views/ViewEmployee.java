@@ -86,9 +86,14 @@ public class ViewEmployee {
             case 5:
                 System.out.println("Masukan Id Employe : ");
                 idEmployee = inp.next();
-                System.out.println(
-                    edao.delete(idEmployee) ? "Delete Berhasil" : "Delete Gagal"
-                );
+                System.out.println("Apakah anda yakin ingin hapus? (ya/tidak) ");
+                String opsi=inp.next();
+                if(opsi.equalsIgnoreCase("ya")){
+                    System.out.println(edao.delete(idEmployee) ? "Delete Berhasil" : "Delete Gagal"
+                    );}
+                    else{
+                        System.out.println("data gagal dihapus");
+                    }     
                 break;
             case 6:
                 System.out.println("Masukan data yang ingin diinput dalam format (Employee_Id First_Name Last_Name Email "

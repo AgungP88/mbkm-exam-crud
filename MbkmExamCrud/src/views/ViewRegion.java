@@ -56,8 +56,14 @@ public class ViewRegion {
             case 5:
                 System.out.println("Masukan Id Region : ");
                 idReg = inp.nextInt();
-                System.out.println(rdao.delete(idReg) ? "Delete Berhasil" : "Delete Gagal"
-                );
+                System.out.println("Apakah anda yakin ingin hapus? (ya/tidak) ");
+                String opsi=inp.next();
+                    if(opsi.equalsIgnoreCase("ya")){
+                    System.out.println(rdao.delete(idReg) ? "Delete Berhasil" : "Delete Gagal"
+                    );}
+                    else{
+                        System.out.println("data gagal dihapus");
+                    }
                 break;
             case 6:
                 System.out.println("Masukan data yang ingin diubah dalam format (Region_Id Region_Name) : ");

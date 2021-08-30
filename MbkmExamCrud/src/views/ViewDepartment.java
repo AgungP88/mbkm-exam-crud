@@ -67,9 +67,14 @@ public class ViewDepartment {
             case 5:
                 System.out.println("Masukan Id Department : ");
                 idDepartment = inp.next();
-                System.out.println(
-                    ddao.delete(idDepartment) ? "Delete Berhasil" : "Delete Gagal"
-                );
+                System.out.println("Apakah anda yakin ingin hapus? (ya/tidak) ");
+                String opsi=inp.next();
+                if(opsi.equalsIgnoreCase("ya")){
+                    System.out.println(ddao.delete(idDepartment) ? "Delete Berhasil" : "Delete Gagal"
+                    );}
+                    else{
+                        System.out.println("data gagal dihapus");
+                    }                            
                 break;
             case 6:
                 System.out.println("Masukan data yang ingin diubah dalam format (Department_Id Department_Name Location_Id "
