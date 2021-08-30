@@ -34,7 +34,11 @@ import views.ViewRegion;
  */
 public class MBKM_CRUD {
     public static void main(String[] args) {
-        DBConnection dbc = new DBConnection();
+        MBKM_CRUD menuHR=new MBKM_CRUD();
+        menuHR.menuUtama();
+    }
+    void menuUtama(){
+                DBConnection dbc = new DBConnection();
        
         //test connection
         System.out.println(dbc.getConnection()); 
@@ -58,26 +62,31 @@ public class MBKM_CRUD {
                 menu.menuCabang();
                 menuReg = inp.nextInt();
                 viewEmployee.crudEmployee(menuReg);
+                menuUtama();
                 break;
             case 2:
                 menu.menuCabang();
                 menuReg = inp.nextInt();
                 viewJob.crudJob(menuReg);
+                menuUtama();
                 break;
             case 3:
                 menu.menuCabang();
                 menuReg=inp.nextInt();
                 viewDepartment.crudDepartment(menuReg);
+                menuUtama();
                 break;
             case 4:
                 menu.menuCabang();
                 menuReg = inp.nextInt();
                 viewLocation.crudLocation(menuReg);
+                menuUtama();
                 break;
             case 5:
                 menu.menuCabang();
                 menuReg = inp.nextInt();
                 viewCountry.crudCountry(menuReg);
+                menuUtama();
                 break;
             case 6:
                 menu.menuCabang();
@@ -92,8 +101,5 @@ public class MBKM_CRUD {
         }
 //       
     }
+    }
     
-       
-}
-        
-

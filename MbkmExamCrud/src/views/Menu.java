@@ -38,7 +38,7 @@ public class Menu {
         CountryDAO cdao = new CountryDAO(dbc.getConnection());
         LocationDAO ldao = new LocationDAO(dbc.getConnection());
         
-        
+       
     public void menuUtama(){
         System.out.println("+----------------------------------------------------------+");
         System.out.println("|              SELAMAT DATANG DI MENU UTAMA                |");
@@ -54,7 +54,7 @@ public class Menu {
         System.out.println("| Pilih Modul yang ingin anda gunakan (Pilih No 1 - 6) :   |");
     }
     
-    public void menuCabang(){
+    public void menuCabang(){      
         System.out.println("+----------------------------------------------------------+");
         System.out.println("|             SELAMAT DATANG DI SUB MENU                   |");
         System.out.println("+----------------------------------------------------------+");
